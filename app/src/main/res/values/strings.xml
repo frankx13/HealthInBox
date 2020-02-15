@@ -7,5 +7,6 @@
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="imageone">imageOne</string>
+    <string name="submit">Submit</string>
 
 </resources>

@@ -3,7 +3,6 @@ package com.studio.neopanda.healthinbox
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.dropbox.core.android.Auth
 import kotlinx.android.synthetic.main.activity_login_drop_box.*
@@ -15,7 +14,8 @@ class LoginDropBoxActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login_drop_box)
 
         sign_in_button.setOnClickListener {
-            Auth.startOAuth2Authentication(applicationContext, getString(R.string.APP_KEY)) }
+            Auth.startOAuth2Authentication(applicationContext, getString(R.string.APP_KEY))
+        }
     }
 
     override fun onResume() {
