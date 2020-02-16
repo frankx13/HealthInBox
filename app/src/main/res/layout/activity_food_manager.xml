@@ -22,4 +22,76 @@
         app:subtitle="@string/subtitle_toolbar"
         app:subtitleTextColor="@android:color/white"/>
 
+    <TextView
+        android:id="@+id/food_menu_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/food_choice"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_food_manager" />
+
+    <Button
+        android:id="@+id/food_history_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/login_dropbox_btn"
+        android:padding="10dp"
+        android:text="@string/food_history"
+        android:textAllCaps="false"
+        android:textColor="#167FFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/food_menu_title" />
+
+    <Button
+        android:id="@+id/food_analysis_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/login_dropbox_btn"
+        android:padding="10dp"
+        android:text="@string/food_analysis"
+        android:textAllCaps="false"
+        android:textColor="#167FFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/food_history_btn" />
+
+    <Button
+        android:id="@+id/food_aliments_data_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/login_dropbox_btn"
+        android:padding="10dp"
+        android:text="@string/food_data"
+        android:textAllCaps="false"
+        android:textColor="#167FFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/food_analysis_btn" />
+
+    <FrameLayout
+        android:id="@+id/fragment_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="6dp"
+        android:layout_margin="9dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
