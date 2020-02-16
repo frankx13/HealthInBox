@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D6FEFF"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#167FFF"
-    tools:context="com.studio.neopanda.healthinbox.LoginDropBoxActivity">
-    <!-- Update package name -->
+    tools:context=".FoodManagerActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_log_db"
+        android:id="@+id/toolbar_food_manager"
         style="@style/ToolBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,19 +22,4 @@
         app:subtitle="@string/subtitle_toolbar"
         app:subtitleTextColor="@android:color/white"/>
 
-    <Button
-        android:id="@+id/sign_in_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sign_in_dropbox"
-        android:textSize="18sp"
-        android:textColor="#167FFF"
-        android:drawableEnd="@drawable/ic_dropbox_24dp"
-        android:background="@drawable/login_dropbox_btn"
-        android:textAllCaps="false"
-        android:padding="10dp"
-        android:drawablePadding="10dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

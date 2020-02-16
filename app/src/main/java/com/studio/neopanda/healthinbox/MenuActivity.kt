@@ -16,5 +16,17 @@ class MenuActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        sportsBtn.setOnClickListener {
+            val intent = Intent(this, SportManagerActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        foodBtn.setOnClickListener {
+            val intent = Intent(this, FoodManagerActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }

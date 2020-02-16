@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#167FFF"
     tools:context=".DropBoxActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -16,7 +17,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+        app:subtitle="@string/subtitle_toolbar"
+        app:subtitleTextColor="@android:color/white"
         app:title="@string/app_name" />
 
     <Button
@@ -24,13 +26,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/sign_out"
-        android:textSize="18sp"
-        android:textAllCaps="false"
         android:background="@drawable/logout_custom_btn"
-        android:padding="3dp"
         android:drawableBottom="@drawable/ic_people_outline_black_24dp"
         android:drawablePadding="3dp"
+        android:padding="3dp"
+        android:text="@string/sign_out"
+        android:textAllCaps="false"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -100,6 +102,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/accountData" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

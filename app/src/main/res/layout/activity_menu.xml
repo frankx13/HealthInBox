@@ -7,11 +7,25 @@
     android:background="#D6FEFF"
     tools:context=".MenuActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/ToolBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_bright"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:subtitle="@string/subtitle_toolbar"
+        app:subtitleTextColor="@android:color/white"
+        app:title="@string/app_name" />
+
     <TextView
         android:id="@+id/main_menu_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="@string/home"
         android:textAlignment="center"
         android:textColor="@android:color/black"
@@ -19,7 +33,21 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/menu_subtitle_storage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/storage_options"
+        android:textAlignment="center"
+        android:textColor="#363636"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_menu_title" />
 
     <Button
         android:id="@+id/dropBoxBtn"
@@ -27,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/login_dropbox_btn"
         android:drawableEnd="@drawable/ic_dropbox_24dp"
         android:drawablePadding="10dp"
@@ -38,6 +66,70 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_menu_title" />
+        app:layout_constraintTop_toBottomOf="@+id/menu_subtitle_storage" />
+
+    <TextView
+        android:id="@+id/menu_subtitle_health_management"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/health_management"
+        android:textAlignment="center"
+        android:textColor="#363636"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dropBoxBtn" />
+
+    <Button
+        android:id="@+id/sportsBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/login_dropbox_btn"
+        android:drawableEnd="@drawable/ic_sports_24dp"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:text="@string/sports_choice"
+        android:textAllCaps="false"
+        android:textColor="#167FFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menu_subtitle_health_management" />
+
+    <Button
+        android:id="@+id/foodBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/login_dropbox_btn"
+        android:drawableEnd="@drawable/ic_burger_24dp"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:text="@string/food_choice"
+        android:textAllCaps="false"
+        android:textColor="#167FFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sportsBtn" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/warning_backup_user_data"
+        android:textAlignment="center"
+        android:textColor="#C70000"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

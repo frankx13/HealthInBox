@@ -11,6 +11,12 @@
     <string name="submit">Submit</string>
     <string name="sign_out">Sign out</string>
     <string name="home">Home</string>
-    <string name="dropbox_choice">DROPBOX</string>
+    <string name="dropbox_choice">DropBox</string>
+    <string name="warning_backup_user_data">***Think to backup your data !***\n***Cloud storage is the most secured way to backup***</string>
+    <string name="storage_options">-Storage&amp;Backup</string>
+    <string name="health_management">-Health Management</string>
+    <string name="sports_choice">Sport Manager</string>
+    <string name="food_choice">Food Manager</string>
+    <string name="subtitle_toolbar">Helps you to become better !</string>
 
 </resources>

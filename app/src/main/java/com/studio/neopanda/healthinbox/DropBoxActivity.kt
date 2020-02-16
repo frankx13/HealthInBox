@@ -43,7 +43,7 @@ class DropBoxActivity : AppCompatActivity() {
         getUserAccount()
 
         fab_upload_img.setOnClickListener {
-            upload()
+            uploadImage()
         }
 
         signout_btn.setOnClickListener {
@@ -108,7 +108,7 @@ class DropBoxActivity : AppCompatActivity() {
             .into(imageView)
     }
 
-    private fun upload() {
+    private fun uploadImage() {
         if (ACCESS_TOKEN == null) return
         //Select image to upload
         val intent = Intent()
