@@ -8,7 +8,7 @@ object DropboxClient {
 
     fun getClient(ACCESS_TOKEN: String): DbxClientV2 {
         // Create Dropbox client
-        val config = DbxRequestConfig("dropbox/sample-app", "en_US")
+        val config = DbxRequestConfig("dropbox/HealthInBox", "en_US")
         return DbxClientV2(config, ACCESS_TOKEN)
     }
 }

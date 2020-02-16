@@ -36,7 +36,7 @@ class UploadTask internal constructor(
         return null
     }
 
-    override fun onPostExecute(o: Any) {
+    override fun onPostExecute(o: Any?) {
         super.onPostExecute(o)
         Toast.makeText(context, "Image uploaded successfully", Toast.LENGTH_SHORT).show()
     }

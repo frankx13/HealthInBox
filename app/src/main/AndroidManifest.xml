@@ -22,7 +22,7 @@
         </activity>
         <!-- Dropbox AuthActivity -->
         <activity
-            android:name="com.studio.neopanda.healthinbox.AuthActivity"
+            android:name="com.dropbox.core.android.AuthActivity"
             android:configChanges="orientation|keyboard"
             android:launchMode="singleTask">
             <intent-filter>
