@@ -4,9 +4,13 @@
 
     <string name="APP_KEY">hpawmh57ffb5l5p</string>
     <string name="sign_in">Sign In</string>
+    <string name="sign_in_dropbox">SIGN IN - DropBox</string>
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="imageone">imageOne</string>
     <string name="submit">Submit</string>
+    <string name="sign_out">Sign out</string>
+    <string name="home">Home</string>
+    <string name="dropbox_choice">DROPBOX</string>
 
 </resources>

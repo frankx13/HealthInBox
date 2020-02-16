@@ -1,4 +1,4 @@
-package com.studio.neopanda.healthinbox
+package com.studio.neopanda.healthinbox.api
 
 import com.dropbox.core.v2.DbxClientV2
 import com.dropbox.core.DbxRequestConfig

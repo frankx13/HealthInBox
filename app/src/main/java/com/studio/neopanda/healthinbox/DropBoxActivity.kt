@@ -1,33 +1,30 @@
 package com.studio.neopanda.healthinbox
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.dropbox.core.v2.users.FullAccount
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_main.*
+import com.studio.neopanda.healthinbox.api.DropboxClient
+import kotlinx.android.synthetic.main.activity_dropbox.*
 import java.io.File
 
-@SuppressLint("ByteOrderMark")
-class MainActivity : AppCompatActivity() {
+class DropBoxActivity : AppCompatActivity() {
     private val IMAGE_REQUEST_CODE = 1
     private var ACCESS_TOKEN: String? = null
     private val READ_PERMISSION_REQUEST_CODE = 11
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_dropbox)
         checkPermissions()
 
         initUI()
@@ -37,16 +34,38 @@ class MainActivity : AppCompatActivity() {
         if (!tokenExists()) {
             //No token
             //Back to LoginActivity
-            val intent = Intent(this@MainActivity, LoginDropBoxActivity::class.java)
+            val intent = Intent(this@DropBoxActivity, LoginDropBoxActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         ACCESS_TOKEN = retrieveAccessToken()
         getUserAccount()
 
-        fab.setOnClickListener {
+        fab_upload_img.setOnClickListener {
             upload()
         }
+
+        signout_btn.setOnClickListener {
+            //Remove token
+            clearAccessToken()
+            //Back to LoginActivity
+            backToLoginActivity()
+        }
+    }
+
+    fun clearAccessToken(){
+        ACCESS_TOKEN = null
+        val prefs =
+            getSharedPreferences("com.studio.neopanda.healthinbox", Context.MODE_PRIVATE)
+        prefs.edit().putString("access-token", "").apply()
+
+    }
+
+    private fun backToLoginActivity() {
+        val intent = Intent(this@DropBoxActivity, MenuActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun initData() {
@@ -104,7 +123,6 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode != Activity.RESULT_OK || data == null) return

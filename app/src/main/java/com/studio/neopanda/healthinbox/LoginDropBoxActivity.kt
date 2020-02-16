@@ -31,9 +31,10 @@ class LoginDropBoxActivity : AppCompatActivity() {
                 getSharedPreferences("com.studio.neopanda.healthinbox", Context.MODE_PRIVATE)
             prefs.edit().putString("access-token", accessToken).apply()
 
-            //Proceed to MainActivity
-            val intent = Intent(applicationContext, MainActivity::class.java)
+            //Proceed to DropBoxActivity
+            val intent = Intent(applicationContext, DropBoxActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

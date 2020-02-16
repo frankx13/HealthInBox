@@ -23,7 +23,7 @@ class UploadTask internal constructor(
             // Upload to Dropbox
             val inputStream = FileInputStream(file)
             dbxClient.files()
-                .uploadBuilder("/" + file.getName()) //Path in the user's Dropbox to save the file
+                .uploadBuilder("/" + file.name) //Path in the user's Dropbox to save the file
                 .withMode(WriteMode.OVERWRITE) //Always overwrite existing file
                 .uploadAndFinish(inputStream)
             Log.d("Upload Status", "Success")

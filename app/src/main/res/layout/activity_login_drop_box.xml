@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#167FFF"
     tools:context="com.studio.neopanda.healthinbox.LoginDropBoxActivity">
     <!-- Update package name -->
 
@@ -10,7 +11,15 @@
         android:id="@+id/sign_in_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/sign_in"
+        android:text="@string/sign_in_dropbox"
+        android:textSize="18sp"
+        android:textColor="#167FFF"
+        android:drawableEnd="@drawable/ic_dropbox_24dp"
+        android:background="@drawable/login_dropbox_btn"
+        android:textAllCaps="false"
+        android:padding="10dp"
+        android:drawablePadding="10dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
