@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.studio.neopanda.healthinbox.R
-import com.studio.neopanda.healthinbox.models.EntryFood
+import com.studio.neopanda.healthinbox.database.Aliment
 
-class FoodHistoryAdapter(context: Context, foodList: ArrayList<EntryFood>) :
+class FoodHistoryAdapter(context: Context, foodList: ArrayList<Aliment>) :
     RecyclerView.Adapter<FoodHistoryAdapter.MyViewHolder>() {
 
-    var mContext: Context? = null
-    var mData: List<EntryFood>? = null
+    private var mContext: Context? = null
+    private var mData: List<Aliment>? = null
 
     init {
         this.mContext = context
@@ -34,14 +34,12 @@ class FoodHistoryAdapter(context: Context, foodList: ArrayList<EntryFood>) :
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.foodName.text = mData!![position].foodName
-        holder.foodCalories.text = mData!![position].foodCalories.toString()
-        holder.foodDate.text = mData!![position].foodDate
+        holder.foodName.text = mData!![position].name
+        holder.foodCalories.text = mData!![position].calories.toString()
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         internal var foodName: TextView = itemView.findViewById(R.id.item_food_history_name)
         internal var foodCalories: TextView = itemView.findViewById(R.id.item_food_history_calories)
-        internal var foodDate: TextView = itemView.findViewById(R.id.item_food_history_date)
     }
 }

@@ -11,12 +11,14 @@ import androidx.recyclerview.widget.RecyclerView
 
 import com.studio.neopanda.healthinbox.R
 import com.studio.neopanda.healthinbox.adapters.FoodHistoryAdapter
+import com.studio.neopanda.healthinbox.database.Aliment
+import com.studio.neopanda.healthinbox.database.AppDatabase
 import com.studio.neopanda.healthinbox.models.EntryFood
 import kotlinx.android.synthetic.main.fragment_food_history.*
 
 class FoodHistoryFragment : Fragment() {
 
-    private var mListData : ArrayList<EntryFood>? = null
+    private var mListData : ArrayList<Aliment>? = null
     private var mRecyclerView: RecyclerView? = null
     private var mAdapter: FoodHistoryAdapter? = null
 
@@ -32,8 +34,8 @@ class FoodHistoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initUI()
+        fetchAlimentsInDB()
 
-        initListData()
         displayHistory()
         setExitFab()
     }
@@ -48,15 +50,11 @@ class FoodHistoryFragment : Fragment() {
         mRecyclerView = food_history_rv
     }
 
-    private fun initListData() {
-        //TODO : Replace hardcoded data with user meals
-        mListData = ArrayList()
-        mListData!!.add(EntryFood("Banana", 32, "16-02-2020"))
-        mListData!!.add(EntryFood("Couscous", 85, "16-02-2020"))
-        mListData!!.add(EntryFood("MacDonalds", 1265, "15-02-2020"))
-        mListData!!.add(EntryFood("KFC", 952, "15-02-2020"))
-        mListData!!.add(EntryFood("Porridge", 245, "14-02-2020"))
-        mListData!!.add(EntryFood("Oatmeal", 92, "14-02-2020"))
+    private fun fetchAlimentsInDB() {
+        val db = AppDatabase(activity!!.applicationContext)
+        db.alimentDao().getAll().forEach {
+            mListData!!.add(Aliment(it.uid, it.name, it.calories))
+        }
     }
 
     private fun displayHistory() {

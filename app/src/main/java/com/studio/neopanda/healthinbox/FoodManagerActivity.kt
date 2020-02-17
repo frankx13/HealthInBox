@@ -2,7 +2,9 @@ package com.studio.neopanda.healthinbox
 
 import android.os.Bundle
 import android.util.Log
+import androidx.room.Room
 import com.studio.neopanda.healthinbox.base.BaseToolbarActivity
+import com.studio.neopanda.healthinbox.database.AppDatabase
 import com.studio.neopanda.healthinbox.fragments.FoodAnalysisFragment
 import com.studio.neopanda.healthinbox.fragments.FoodDataFragment
 import com.studio.neopanda.healthinbox.fragments.FoodHistoryFragment
