@@ -59,4 +59,15 @@ dependencies {
     def room_version = "2.2.3"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+
+    //Lifecycle components
+    def lifecycle_version = "2.2.3"
+    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
+    kapt "android.arch.lifecycle:compiler:$lifecycle_version"
+
+    //Persistence components
+    def persistence_version = "2.2.3"
+    implementation "android.arch.persistence.room:runtime:$persistence_version"
+    kapt "android.arch.persistence.room:runtime:$persistence_version"
+
 }

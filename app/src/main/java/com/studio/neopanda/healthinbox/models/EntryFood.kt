@@ -1,6 +1,6 @@
 package com.studio.neopanda.healthinbox.models
 
-//TODO : remove when Room Aliment is implemented
+//TODO : remove when Room Aliments is implemented
 class EntryFood (foodName : String, foodCalories : Int, foodDate : String) {
 
     var foodName: String = ""

@@ -1,24 +1,16 @@
 package com.studio.neopanda.healthinbox.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.studio.neopanda.healthinbox.R
-import com.studio.neopanda.healthinbox.database.Aliment
+import com.studio.neopanda.healthinbox.database.Aliments
 
-class FoodHistoryAdapter(context: Context, foodList: ArrayList<Aliment>) :
-    RecyclerView.Adapter<FoodHistoryAdapter.MyViewHolder>() {
+class FoodHistoryAdapter : RecyclerView.Adapter<FoodHistoryAdapter.MyViewHolder>() {
 
-    private var mContext: Context? = null
-    private var mData: List<Aliment>? = null
-
-    init {
-        this.mContext = context
-        this.mData = foodList
-    }
+    private var mData: List<Aliments>? = null
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -30,12 +22,21 @@ class FoodHistoryAdapter(context: Context, foodList: ArrayList<Aliment>) :
     }
 
     override fun getItemCount(): Int {
-        return mData!!.size
+        return if (mData == null) {
+            0
+        } else {
+            mData!!.size
+        }
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.foodName.text = mData!![position].name
         holder.foodCalories.text = mData!![position].calories.toString()
+    }
+
+    fun setAliments(aliments: List<Aliments>) {
+        this.mData = aliments
+        notifyDataSetChanged()
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

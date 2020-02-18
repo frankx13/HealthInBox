@@ -1,24 +1,19 @@
 package com.studio.neopanda.healthinbox.database
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.lifecycle.LiveData
+import androidx.room.*
+
 
 @Dao
 interface AlimentDAO {
-    @Query("SELECT * FROM aliment")
-    fun getAll(): List<Aliment>
-
-    @Query("SELECT * FROM aliment WHERE uid IN (:alimentIds)")
-    fun loadAllByIds(alimentIds: IntArray): List<Aliment>
-
-    @Query("SELECT * FROM aliment WHERE name LIKE :name LIMIT 1")
-    fun findByName(name: String): Aliment
 
     @Insert
-    fun insertAll(vararg aliments: Aliment)
+    fun insert(aliments : Aliments)
 
-    @Delete
-    fun delete(aliments: Aliment)
+    @Query("DELETE FROM aliments_tables")
+    fun deleteAllAliments()
+
+    @Query("SELECT * FROM aliments_tables ")
+    fun getAllAliments(): LiveData<List<Aliments>>
+
 }
