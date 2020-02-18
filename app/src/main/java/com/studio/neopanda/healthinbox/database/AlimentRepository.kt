@@ -1,51 +1,73 @@
 package com.studio.neopanda.healthinbox.database
 
-import android.app.Application
 import android.os.AsyncTask
 import androidx.lifecycle.LiveData
+import android.app.Application
+
 
 class AlimentRepository(application: Application) {
-
-    private var alimentDAO: AlimentDAO
-
-    private var allAliments: LiveData<List<Aliments>>
+    private val alimentDao: AlimentDao
+    private val allAliments: LiveData<List<Aliment>>
 
     init {
-        val database: AppDatabase = AppDatabase.getInstance(
-            application.applicationContext
-        )!!
-        alimentDAO = database.alimentsDao()
-        allAliments = alimentDAO.getAllAliments()
+        val database = AlimentDatabase.getInstance(application)
+        alimentDao = database.alimentDao()
+        allAliments = alimentDao.allAliments
     }
 
-    fun insert(aliment: Aliments) {
-        val insertNoteAsyncTask = InsertNoteAsyncTask(alimentDAO).execute(aliment)
+    fun insert(aliment: Aliment) {
+        InsertAlimentAsyncTask(alimentDao).execute(aliment)
+    }
+
+    fun update(aliment: Aliment) {
+        UpdateAlimentAsyncTask(alimentDao).execute(aliment)
+    }
+
+    fun delete(aliment: Aliment) {
+        DeleteAlimentAsyncTask(alimentDao).execute(aliment)
     }
 
     fun deleteAllAliments() {
-        val deleteAllNotesAsyncTask = DeleteAllAlimentsAsyncTask(
-            alimentDAO
-        ).execute()
+        DeleteAllAlimentsAsyncTask(alimentDao).execute()
     }
 
-    fun getAllAliments(): LiveData<List<Aliments>> {
+    fun getAllAliments(): LiveData<List<Aliment>> {
         return allAliments
     }
 
-    private class InsertNoteAsyncTask(noteDao: AlimentDAO) : AsyncTask<Aliments, Unit, Unit>() {
-        val noteDao = noteDao
+    private class InsertAlimentAsyncTask internal constructor(private val alimentDao: AlimentDao) :
+        AsyncTask<Aliment, Void, Void>() {
 
-        override fun doInBackground(vararg p0: Aliments?) {
-            noteDao.insert(p0[0]!!)
+        override fun doInBackground(vararg aliments: Aliment): Void? {
+            alimentDao.insert(aliments[0])
+            return null
         }
     }
 
+    private class UpdateAlimentAsyncTask internal constructor(private val alimentDao: AlimentDao) :
+        AsyncTask<Aliment, Void, Void>() {
 
-    private class DeleteAllAlimentsAsyncTask(val noteDao: AlimentDAO) : AsyncTask<Unit, Unit, Unit>() {
-
-        override fun doInBackground(vararg p0: Unit?) {
-            noteDao.deleteAllAliments()
+        override fun doInBackground(vararg aliments: Aliment): Void? {
+            alimentDao.update(aliments[0])
+            return null
         }
     }
 
+    private class DeleteAlimentAsyncTask internal constructor(private val alimentDao: AlimentDao) :
+        AsyncTask<Aliment, Void, Void>() {
+
+        override fun doInBackground(vararg aliments: Aliment): Void? {
+            alimentDao.delete(aliments[0])
+            return null
+        }
+    }
+
+    private class DeleteAllAlimentsAsyncTask internal constructor(private val alimentDao: AlimentDao) :
+        AsyncTask<Void, Void, Void>() {
+
+        override fun doInBackground(vararg voids: Void): Void? {
+            alimentDao.deleteAllAliments()
+            return null
+        }
+    }
 }

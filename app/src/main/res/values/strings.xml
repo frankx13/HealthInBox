@@ -28,5 +28,8 @@
     <string name="sample_foodcalories">12 calories</string>
     <string name="sample_foodname">Food Name</string>
     <string name="sample_fooddate">16–02–2020 23:38</string>
+    <string name="cal_sample">150 kcal</string>
+    <string name="weight_sample">150 grammes</string>
+    <string name="name_sample">Name</string>
 
 </resources>

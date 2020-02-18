@@ -5,20 +5,32 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 
 class AlimentViewModel(application: Application) : AndroidViewModel(application) {
+    private val repository: AlimentRepository = AlimentRepository(application)
 
-    private var repository: AlimentRepository =
-        AlimentRepository(application)
-    private var allAliments: LiveData<List<Aliments>> = repository.getAllAliments()
+    private var allAliments: LiveData<List<Aliment>>
 
-    fun insert(note: Aliments) {
-        repository.insert(note)
+    init {
+
+        allAliments = repository.getAllAliments()
+    }
+
+    fun insert(aliment: Aliment) {
+        repository.insert(aliment)
+    }
+
+    fun update(aliment: Aliment) {
+        repository.update(aliment)
+    }
+
+    fun delete(aliment: Aliment) {
+        repository.delete(aliment)
     }
 
     fun deleteAllAliments() {
         repository.deleteAllAliments()
     }
 
-    fun getAllAliments(): LiveData<List<Aliments>> {
+    fun getAllAliments(): LiveData<List<Aliment>> {
         return allAliments
     }
 }

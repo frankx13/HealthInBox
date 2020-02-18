@@ -3,11 +3,7 @@ package com.studio.neopanda.healthinbox
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.room.Room
-import com.studio.neopanda.healthinbox.database.Aliments
-import com.studio.neopanda.healthinbox.database.AppDatabase
 import kotlinx.android.synthetic.main.activity_menu.*
-
 
 class MenuActivity : AppCompatActivity() {
 

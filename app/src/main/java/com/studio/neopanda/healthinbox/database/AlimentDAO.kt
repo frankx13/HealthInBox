@@ -3,17 +3,21 @@ package com.studio.neopanda.healthinbox.database
 import androidx.lifecycle.LiveData
 import androidx.room.*
 
-
 @Dao
-interface AlimentDAO {
+interface AlimentDao {
 
     @Insert
-    fun insert(aliments : Aliments)
+    fun insert(aliment: Aliment)
 
-    @Query("DELETE FROM aliments_tables")
+    @Update
+    fun update(aliment: Aliment)
+
+    @Delete
+    fun delete(aliment: Aliment)
+
+    @Query("DELETE FROM aliments_table")
     fun deleteAllAliments()
 
-    @Query("SELECT * FROM aliments_tables ")
-    fun getAllAliments(): LiveData<List<Aliments>>
-
+    @get:Query("SELECT * FROM aliments_table ORDER BY name DESC")
+    val allAliments: LiveData<List<Aliment>>
 }
