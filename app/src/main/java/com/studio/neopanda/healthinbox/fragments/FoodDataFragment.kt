@@ -11,14 +11,15 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.studio.neopanda.healthinbox.AddEditAlimentActivity
 import com.studio.neopanda.healthinbox.R
 import com.studio.neopanda.healthinbox.adapters.AlimentAdapter
 import com.studio.neopanda.healthinbox.database.Aliment
 import com.studio.neopanda.healthinbox.database.AlimentViewModel
 import kotlinx.android.synthetic.main.fragment_food_data.*
-
 
 class FoodDataFragment : Fragment() {
     private var alimentViewModel: AlimentViewModel? = null
@@ -43,6 +44,7 @@ class FoodDataFragment : Fragment() {
         val adapter = AlimentAdapter()
         recyclerView.adapter = adapter
 
+        //OBSERVE ALIMENTS
         alimentViewModel = ViewModelProviders.of(this).get(AlimentViewModel::class.java)
         alimentViewModel!!.getAllAliments().observe(
             this,
@@ -53,6 +55,7 @@ class FoodDataFragment : Fragment() {
             })
         )
 
+        //EDIT ONE ALIMENT
         adapter.setOnItemClickListener(object : AlimentAdapter.OnItemClickListener {
             override fun onItemClick(aliment: Aliment) {
                 val intent = Intent(activity, AddEditAlimentActivity::class.java)
@@ -66,11 +69,39 @@ class FoodDataFragment : Fragment() {
             }
         })
 
+        //ADD ONE ALIMENT
         val fabAddNote = fab_add_aliment
         fabAddNote.setOnClickListener {
             val intent = Intent(activity, AddEditAlimentActivity::class.java)
             startActivityForResult(intent, ADD_ALIMENT_REQUEST)
         }
+
+        //REMOVE ALL ALIMENTS
+        val fabDeleteAllNotes = fab_delete_all_aliments
+        fabDeleteAllNotes.setOnClickListener {
+            alimentViewModel!!.deleteAllAliments()
+            Toast.makeText(activity, "Aliments nuked", Toast.LENGTH_SHORT).show()
+        }
+
+        //REMOVE ONE ALIMENT
+        ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
+            0,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                alimentViewModel!!.delete(adapter.getAlimentAt(viewHolder.adapterPosition))
+                Toast.makeText(activity, "Aliment deleted", Toast.LENGTH_SHORT).show()
+            }
+        }).attachToRecyclerView(recyclerView)
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -81,8 +112,8 @@ class FoodDataFragment : Fragment() {
             val calories = data.getIntExtra(AddEditAlimentActivity.EXTRA_CALORIES, 1)
             val weight = data.getIntExtra(AddEditAlimentActivity.EXTRA_WEIGHT, 1)
 
-            val note = Aliment(name!!, calories, weight)
-            alimentViewModel!!.insert(note)
+            val aliment = Aliment(name!!, calories, weight)
+            alimentViewModel!!.insert(aliment)
 
             Toast.makeText(activity, "Aliment saved", Toast.LENGTH_SHORT).show()
         } else if (requestCode == EDIT_ALIMENT_REQUEST && resultCode == Activity.RESULT_OK) {

@@ -25,8 +25,8 @@ class AlimentAdapter : ListAdapter<Aliment, AlimentAdapter.AlimentHolder>(DiffCa
     override fun onBindViewHolder(holder: AlimentHolder, position: Int) {
         val currentAliment = getItem(position)
         holder.textViewName.text = currentAliment.name
-        holder.textViewCalories.setText(currentAliment.calories.toString())
-        holder.textViewWeight.text = currentAliment.weight.toString()
+        holder.textViewCalories.text = currentAliment.calories.toString() + " calories"
+        holder.textViewWeight.text = "for " + currentAliment.weight.toString() + " g"
     }
 
     fun getAlimentAt(position: Int): Aliment {

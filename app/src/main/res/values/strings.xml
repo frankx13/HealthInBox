@@ -36,5 +36,7 @@
     <string name="calories">Calories</string>
     <string name="weight">Weight</string>
     <string name="add_an_aliment">Add an Aliment</string>
+    <string name="add_aliment">Add</string>
+    <string name="nuke_all_aliments">Nuke all</string>
 
 </resources>
