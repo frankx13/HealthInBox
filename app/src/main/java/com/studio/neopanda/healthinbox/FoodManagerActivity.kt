@@ -1,5 +1,6 @@
 package com.studio.neopanda.healthinbox
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import com.studio.neopanda.healthinbox.base.BaseToolbarActivity
@@ -9,6 +10,10 @@ import com.studio.neopanda.healthinbox.fragments.FoodHistoryFragment
 import kotlinx.android.synthetic.main.activity_food_manager.*
 
 class FoodManagerActivity : BaseToolbarActivity() {
+    companion object {
+        val ADD_NOTE_REQUEST = 1
+        val EDIT_NOTE_REQUEST = 2
+    }
 
     private val backTargetActivity = MenuActivity()
 
@@ -64,6 +69,14 @@ class FoodManagerActivity : BaseToolbarActivity() {
             transaction.addToBackStack(null)
             transaction.commit()
         }
+    }
+
+    // In your activity
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+//        for (fragment in supportFragmentManager.fragments) {
+//            fragment.onActivityResult(requestCode, resultCode, data)
+//        }
     }
 
     override fun onBackPressed() {

@@ -4,13 +4,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.studio.neopanda.healthinbox.R
 import com.studio.neopanda.healthinbox.database.Aliment
-import java.util.ArrayList
 
-class AlimentAdapter : RecyclerView.Adapter<AlimentAdapter.AlimentHolder>() {
-    private var aliments: List<Aliment> = ArrayList()
+
+class AlimentAdapter : ListAdapter<Aliment, AlimentAdapter.AlimentHolder>(DiffCallback()) {
+
+    private var listener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlimentHolder {
         val itemView = LayoutInflater.from(parent.context)
@@ -20,23 +23,32 @@ class AlimentAdapter : RecyclerView.Adapter<AlimentAdapter.AlimentHolder>() {
     }
 
     override fun onBindViewHolder(holder: AlimentHolder, position: Int) {
-        val currentAliment = aliments[position]
+        val currentAliment = getItem(position)
         holder.textViewName.text = currentAliment.name
-        holder.textViewCalories.setText(currentAliment.calories)
+        holder.textViewCalories.setText(currentAliment.calories.toString())
         holder.textViewWeight.text = currentAliment.weight.toString()
     }
 
-    override fun getItemCount(): Int {
-        return aliments.size
-    }
-
-    fun setAliments(aliments: List<Aliment>) {
-        this.aliments = aliments
-        notifyDataSetChanged()
-    }
-
     fun getAlimentAt(position: Int): Aliment {
-        return aliments[position]
+        return getItem(position)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.listener = listener
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(aliment: Aliment)
+    }
+
+    class DiffCallback : DiffUtil.ItemCallback<Aliment>() {
+        override fun areItemsTheSame(oldItem: Aliment, newItem: Aliment): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: Aliment, newItem: Aliment): Boolean {
+            return oldItem == newItem
+        }
     }
 
     inner class AlimentHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -44,6 +56,15 @@ class AlimentAdapter : RecyclerView.Adapter<AlimentAdapter.AlimentHolder>() {
         val textViewName: TextView = itemView.findViewById(R.id.text_view_name)
         val textViewCalories: TextView = itemView.findViewById(R.id.text_view_calories)
         val textViewWeight: TextView = itemView.findViewById(R.id.text_view_weight)
+
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (listener != null && position != RecyclerView.NO_POSITION) {
+                    listener!!.onItemClick(getItem(position))
+                }
+            }
+        }
 
     }
 }
