@@ -101,7 +101,6 @@ class FoodDataFragment : Fragment() {
                 Toast.makeText(activity, "Aliment deleted", Toast.LENGTH_SHORT).show()
             }
         }).attachToRecyclerView(recyclerView)
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

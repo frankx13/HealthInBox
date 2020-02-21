@@ -10,7 +10,6 @@ class AlimentViewModel(application: Application) : AndroidViewModel(application)
     private var allAliments: LiveData<List<Aliment>>
 
     init {
-
         allAliments = repository.getAllAliments()
     }
 

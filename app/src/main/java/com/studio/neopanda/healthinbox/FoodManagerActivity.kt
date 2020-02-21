@@ -7,6 +7,7 @@ import com.studio.neopanda.healthinbox.base.BaseToolbarActivity
 import com.studio.neopanda.healthinbox.fragments.FoodAnalysisFragment
 import com.studio.neopanda.healthinbox.fragments.FoodDataFragment
 import com.studio.neopanda.healthinbox.fragments.FoodHistoryFragment
+import com.studio.neopanda.healthinbox.fragments.FoodRecipesFragment
 import kotlinx.android.synthetic.main.activity_food_manager.*
 
 class FoodManagerActivity : BaseToolbarActivity() {
@@ -33,6 +34,7 @@ class FoodManagerActivity : BaseToolbarActivity() {
         showFoodHistory()
         showFoodAnalysis()
         showFoodData()
+        showFoodRecipes()
     }
 
     private fun showFoodHistory() {
@@ -66,6 +68,18 @@ class FoodManagerActivity : BaseToolbarActivity() {
             val transaction = manager.beginTransaction()
 
             transaction.add(R.id.fragment_screen, dataFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+    }
+
+    private fun showFoodRecipes() {
+        food_aliments_recipes_btn.setOnClickListener {
+            val recipesFragment = FoodRecipesFragment()
+            val manager = supportFragmentManager
+            val transaction = manager.beginTransaction()
+
+            transaction.add(R.id.fragment_screen, recipesFragment)
             transaction.addToBackStack(null)
             transaction.commit()
         }

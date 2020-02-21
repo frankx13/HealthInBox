@@ -32,11 +32,29 @@
     <string name="weight_sample">150 grammes</string>
     <string name="name_sample">Name</string>
     <string name="the_name_of_this_aliment_meal_is">The name of this aliment/meal is :</string>
-    <string name="number_calories_contained">This aliment contains those calories :</string>
+    <string name="number_calories_contained">This contains those calories :</string>
     <string name="calories">Calories</string>
     <string name="weight">Weight</string>
     <string name="add_an_aliment">Add an Aliment</string>
     <string name="add_aliment">Add</string>
     <string name="nuke_all_aliments">Nuke all</string>
+    <string name="food_recipes">My Recipes</string>
+    <string name="aliments_listed_recipe">- Aliment \n- OtherAliment 2 \n- AnotherAliment 3</string>
+    <string name="aliments_listed_instructions">1. Peal the Aliment.\n2. Mix the Aliment with the OtherAliment until you get a solid mixture in a bowl.\n3. Add the AnotherIngredient into the bowl, pour it into a hot-resisting plate and toss it to your witcher.\n4. Serve hot and enjoy the tossed coin!</string>
+    <string name="weight_total">For this weight :</string>
+    <string name="add_a_recipe">Add a recipe</string>
+    <string name="name_recipe_prompt">The name of the recipe is :</string>
+    <string name="number_people_feed">For this many people :</string>
+    <string name="people_number">Number of people</string>
+    <string name="time_preparation">Time to make it :</string>
+    <string name="time">Time</string>
+    <string name="cost">Cost</string>
+    <string name="cost_recipe">It costs approximately :</string>
+    <string name="difficulty_recipe">Realization difficulty (0 to 3)</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="ingredients_recipe">Ingredients needed :</string>
+    <string name="instructions">Instructions</string>
+    <string name="instructions_recipe">Steps to make it :</string>
 
 </resources>
