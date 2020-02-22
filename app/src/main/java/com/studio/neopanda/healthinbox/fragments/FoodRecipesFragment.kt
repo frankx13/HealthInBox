@@ -24,6 +24,7 @@ import com.studio.neopanda.healthinbox.database.AlimentViewModel
 import com.studio.neopanda.healthinbox.database.Recipe
 import com.studio.neopanda.healthinbox.database.RecipeViewModel
 import kotlinx.android.synthetic.main.fragment_food_data.*
+import kotlinx.android.synthetic.main.fragment_food_history.*
 import kotlinx.android.synthetic.main.fragment_food_recipes.*
 
 
@@ -42,6 +43,8 @@ class FoodRecipesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setExitFab()
 
         val recyclerView = recyclerview_recipes
         recyclerView.layoutManager = LinearLayoutManager(activity!!.applicationContext)
@@ -151,6 +154,12 @@ class FoodRecipesFragment : Fragment() {
             Toast.makeText(activity, "Recipe updated", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(activity, "Recipe not updated", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun setExitFab() {
+        fab_exit_food_recipes.setOnClickListener {
+            activity!!.onBackPressed()
         }
     }
 }

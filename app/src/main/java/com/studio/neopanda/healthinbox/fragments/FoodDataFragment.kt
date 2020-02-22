@@ -4,6 +4,7 @@ package com.studio.neopanda.healthinbox.fragments
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,8 +19,10 @@ import com.studio.neopanda.healthinbox.AddEditAlimentActivity
 import com.studio.neopanda.healthinbox.R
 import com.studio.neopanda.healthinbox.adapters.AlimentAdapter
 import com.studio.neopanda.healthinbox.database.Aliment
+import com.studio.neopanda.healthinbox.database.AlimentDatabase
 import com.studio.neopanda.healthinbox.database.AlimentViewModel
 import kotlinx.android.synthetic.main.fragment_food_data.*
+import kotlinx.android.synthetic.main.fragment_food_history.*
 
 class FoodDataFragment : Fragment() {
     private var alimentViewModel: AlimentViewModel? = null
@@ -36,6 +39,8 @@ class FoodDataFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setExitFab()
 
         val recyclerView = recyclerview
         recyclerView.layoutManager = LinearLayoutManager(activity!!.applicationContext)
@@ -70,15 +75,15 @@ class FoodDataFragment : Fragment() {
         })
 
         //ADD ONE ALIMENT
-        val fabAddNote = fab_add_aliment
-        fabAddNote.setOnClickListener {
+        val fabAddAliment = fab_add_aliment
+        fabAddAliment.setOnClickListener {
             val intent = Intent(activity, AddEditAlimentActivity::class.java)
             startActivityForResult(intent, ADD_ALIMENT_REQUEST)
         }
 
         //REMOVE ALL ALIMENTS
-        val fabDeleteAllNotes = fab_delete_all_aliments
-        fabDeleteAllNotes.setOnClickListener {
+        val fabDeleteAllAliments = fab_delete_all_aliments
+        fabDeleteAllAliments.setOnClickListener {
             alimentViewModel!!.deleteAllAliments()
             Toast.makeText(activity, "Aliments nuked", Toast.LENGTH_SHORT).show()
         }
@@ -133,6 +138,12 @@ class FoodDataFragment : Fragment() {
             Toast.makeText(activity, "Aliment updated", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(activity, "Aliment not updated", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun setExitFab() {
+        fab_exit_food_data.setOnClickListener {
+            activity!!.onBackPressed()
         }
     }
 }

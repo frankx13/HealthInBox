@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/tv_meal_date_static"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sample_date_meal_static"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/tv_meal_date_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tv_meal_date_static"
+            android:text="@string/sample_date_meal"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/tv_meal_name_static"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sample_name_meal_static"
+            android:textColor="@android:color/black"
+            android:layout_below="@id/tv_meal_date_static"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/tv_meal_name_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tv_meal_name_static"
+            android:layout_below="@id/tv_meal_date_static"
+            android:text="@string/name_sample_meal"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/tv_meal_calories_static"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/calories_static_sample_meal"
+            android:textColor="@android:color/black"
+            android:layout_below="@id/tv_meal_name_static"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/tv_meal_calories_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tv_meal_calories_static"
+            android:layout_below="@id/tv_meal_name_static"
+            android:text="@string/calories_sample_meal"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textAlignment="center"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

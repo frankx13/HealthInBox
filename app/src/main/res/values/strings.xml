@@ -56,5 +56,18 @@
     <string name="ingredients_recipe">Ingredients needed :</string>
     <string name="instructions">Instructions</string>
     <string name="instructions_recipe">Steps to make it :</string>
+    <string name="calories_sample_meal">685 calories</string>
+    <string name="calories_static_sample_meal">It contained : </string>
+    <string name="name_sample_meal">Lasagnas</string>
+    <string name="sample_name_meal_static">You ate : </string>
+    <string name="sample_date_meal">22–02–2020</string>
+    <string name="sample_date_meal_static">The : </string>
+    <string name="add_a_meal">Add a meal</string>
+    <string name="the_name_of_this_meal_is">Type of meal you ate :</string>
+    <string name="meal_date">At this date :</string>
+    <string name="date_sample">Date</string>
+    <string name="nuke_all_meal">NUKE MEALS</string>
+    <string name="add">ADD</string>
+    <string name="nuke_all">Nuke all</string>
 
 </resources>
