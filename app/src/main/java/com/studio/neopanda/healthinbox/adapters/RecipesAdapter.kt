@@ -30,7 +30,7 @@ class RecipesAdapter : ListAdapter<Recipe, RecipesAdapter.RecipeHolder>(DiffCall
         holder.cost.text = currentRecipe.cost.toString()
         holder.difficulty.text = currentRecipe.difficulty.toString()
         //TODO display all ingredients
-        holder.ingredients.text = currentRecipe.ingredients[0].toString()
+        holder.ingredients.text = currentRecipe.ingredients
         holder.instructions.text = currentRecipe.instructions
 
         holder.displayHideInstructionsBtn.setOnClickListener {

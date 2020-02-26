@@ -1,9 +1,10 @@
 package com.studio.neopanda.healthinbox.database
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "recipes_table")
+@Entity(tableName = "recipes_table", indices = [Index(value = ["name"], unique = true)])
 data class Recipe(
     var name: String,
     var ingredients: String,

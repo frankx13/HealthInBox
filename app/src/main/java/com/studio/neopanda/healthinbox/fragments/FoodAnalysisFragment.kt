@@ -45,10 +45,11 @@ class FoodAnalysisFragment : Fragment() {
         Log.e("MEALS", "" + allMeals!!.value.toString())
 
 
-        //Part1
+        //Create the values table
         val entries = ArrayList<Entry>()
 
-        //Part2
+        //Fill values table with hardcoded values
+        //TODO replace with DB data
         entries.add(Entry(1f, 2855f))
         entries.add(Entry(1f, 1850f))
         entries.add(Entry(1f, 3950f))
@@ -77,10 +78,10 @@ class FoodAnalysisFragment : Fragment() {
         entries.add(Entry(24f, 2450f))
         entries.add(Entry(25f, 2100f))
 
-        //Part3
+        //Create the parameters table of the chart
         val vl = LineDataSet(entries, "Calories")
 
-        //Part4
+        //Fill the parameters of the table
         vl.setDrawValues(false)
         vl.setDrawFilled(true)
         vl.lineWidth = 3f
@@ -92,31 +93,33 @@ class FoodAnalysisFragment : Fragment() {
         vl.valueTextSize = 18f
         vl.valueTextColor = Color.BLACK
 
-        //Part5
+        //Set the rotation on the X axis
         lineChart.xAxis.labelRotationAngle = 0f
 
-        //Part6
+        //Add parameters to the chart
         lineChart.data = LineData(vl)
 
-        //Part7
-        val j = 30f
+        //Assign the number of rows max
+        val j = 26f
+
+        //Disable the right axis and apply the maxnumber of rows
         lineChart.axisRight.isEnabled = false
         lineChart.xAxis.axisMaximum = j + 0.1f
 
-        //Part8
+        //Allow Touch and Zoom events
         lineChart.setTouchEnabled(true)
         lineChart.setPinchZoom(true)
 
-        //Part9
+        //Add description to the chart
         lineChart.description.text = " Days ---------->"
         lineChart.description.textSize = 18f
         lineChart.description.textColor = Color.WHITE
         lineChart.setNoDataText("No data to analyze.")
 
-        //Part10
+        //Add animation to display the chart graphics
         lineChart.animateX(2200, Easing.EaseInExpo)
 
-        //Part11
+        //Add a marker to draw the chart
         val markerView = CustomMarker(activity!!, R.layout.marker_view)
         lineChart.marker = markerView
 

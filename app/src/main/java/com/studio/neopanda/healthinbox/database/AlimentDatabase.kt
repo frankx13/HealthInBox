@@ -11,7 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(
     entities = [Aliment::class, Recipe::class, Meal::class],
-    version = 12,
+    version = 1,
     exportSchema = false
 )
 abstract class AlimentDatabase : RoomDatabase() {
