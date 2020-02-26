@@ -7,11 +7,13 @@ import androidx.lifecycle.LiveData
 class MealRepository(application: Application) {
     private val mealDao: MealDao
     private val allMeals: LiveData<List<Meal>>
+    private val allMealsStored: List<Meal>
 
     init {
         val database = AlimentDatabase.getInstance(application)
         mealDao = database.mealDao()
         allMeals = mealDao.allMeals
+        allMealsStored = mealDao.allMealsStored
     }
 
     fun insert(meal: Meal) {
@@ -32,6 +34,10 @@ class MealRepository(application: Application) {
 
     fun getAllMeals(): LiveData<List<Meal>> {
         return allMeals
+    }
+
+    fun getAllMealsStored(): List<Meal> {
+        return allMealsStored
     }
 
     private class InsertMealAsyncTask internal constructor(private val mealDao: MealDao) :

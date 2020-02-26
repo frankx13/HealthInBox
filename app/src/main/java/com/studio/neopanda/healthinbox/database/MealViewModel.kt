@@ -8,9 +8,11 @@ class MealViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: MealRepository = MealRepository(application)
 
     private var allMeals: LiveData<List<Meal>>
+    private var allMealsStored: List<Meal>
 
     init {
         allMeals = repository.getAllMeals()
+        allMealsStored = repository.getAllMealsStored()
     }
 
     fun insert(meal: Meal) {
@@ -31,5 +33,9 @@ class MealViewModel(application: Application) : AndroidViewModel(application) {
 
     fun getAllMeals(): LiveData<List<Meal>> {
         return allMeals
+    }
+
+    fun getAllMealsStored(): List<Meal>{
+        return allMealsStored
     }
 }
