@@ -4,6 +4,7 @@ package com.studio.neopanda.healthinbox.fragments
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,9 +52,11 @@ class FoodHistoryFragment : Fragment() {
         mealViewModel!!.getAllMeals().observe(
             this,
             Observer<List<Meal>>(fun(meals: List<Meal>) {
+                adapter.submitList(null)
+                adapter.notifyDataSetChanged()
                 adapter.submitList(meals)
-                Toast.makeText(activity!!.applicationContext, "OBSERVING", Toast.LENGTH_SHORT)
-                    .show()
+                adapter.notifyDataSetChanged()
+                Log.e("ASYNCTASK STATUS", "LOAD RV")
             })
         )
 

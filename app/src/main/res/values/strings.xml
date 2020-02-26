@@ -69,5 +69,10 @@
     <string name="nuke_all_meal">NUKE MEALS</string>
     <string name="add">ADD</string>
     <string name="nuke_all">Nuke all</string>
+    <string name="instructions_show">Instructions : Show</string>
+    <string name="cheap">Cheap</string>
+    <string name="hard">Hard</string>
+    <string name="_5m">5m</string>
+    <string name="_5">5</string>
 
 </resources>

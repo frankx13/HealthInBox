@@ -9,12 +9,17 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 
 
-@Database(entities = [Aliment::class, Recipe::class, Meal::class], version = 8, exportSchema = false)
+@Database(
+    entities = [Aliment::class, Recipe::class, Meal::class],
+    version = 12,
+    exportSchema = false
+)
 abstract class AlimentDatabase : RoomDatabase() {
 
     abstract fun alimentDao(): AlimentDao
     abstract fun recipeDao(): RecipeDao
     abstract fun mealDao(): MealDao
+
 
     companion object {
         private var instance: AlimentDatabase? = null
@@ -38,13 +43,13 @@ abstract class AlimentDatabase : RoomDatabase() {
             override fun onCreate(db: SupportSQLiteDatabase) {
                 super.onCreate(db)
 
-                PopulateDBAsyncTask(instance!!).execute()
                 Log.e("DBMANAGEMENT", "DATABASE ONCREATE")
             }
 
             override fun onOpen(db: SupportSQLiteDatabase) {
                 super.onOpen(db)
 
+                PopulateDBAsyncTask(instance!!).execute()
                 Log.e("DBMANAGEMENT", "DATABASE ONOPEN")
             }
         }
@@ -53,7 +58,8 @@ abstract class AlimentDatabase : RoomDatabase() {
             AsyncTask<Void, Void, Void>() {
 
             private val alimentDao: AlimentDao = db.alimentDao()
-            private val mealDao : MealDao = db.mealDao()
+            private val mealDao: MealDao = db.mealDao()
+            private val recipeDao: RecipeDao = db.recipeDao()
 
             override fun doInBackground(vararg voids: Void): Void? {
                 alimentDao.insert(Aliment("PineApple (medium)", 50, 112))
@@ -65,7 +71,14 @@ abstract class AlimentDatabase : RoomDatabase() {
                 mealDao.insert(Meal("Banana Apple", "22-02-2020", 270))
                 mealDao.insert(Meal("Avocado PineApple", "22-02-2020", 100))
 
+                recipeDao.insert(Recipe("Couscous", "3 tomatoes, 3 peppers, couscous thin grain, chicken, beef, veal, paprika, harissa", "Make mijoter tout ca un moment", 10, 2, 50, 200))
+
                 return null
+            }
+
+            override fun onPostExecute(result: Void?) {
+                super.onPostExecute(result)
+
             }
         }
     }

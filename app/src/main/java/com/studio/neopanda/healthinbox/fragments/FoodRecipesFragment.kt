@@ -26,6 +26,7 @@ import com.studio.neopanda.healthinbox.database.RecipeViewModel
 import kotlinx.android.synthetic.main.fragment_food_data.*
 import kotlinx.android.synthetic.main.fragment_food_history.*
 import kotlinx.android.synthetic.main.fragment_food_recipes.*
+import kotlinx.android.synthetic.main.item_recipe.*
 
 
 class FoodRecipesFragment : Fragment() {
@@ -58,7 +59,10 @@ class FoodRecipesFragment : Fragment() {
         recipesViewModel!!.getAllRecipes().observe(
             this,
             Observer<List<Recipe>>(fun(recipes: List<Recipe>) {
+                adapter.submitList(null)
+                adapter.notifyDataSetChanged()
                 adapter.submitList(recipes)
+                adapter.notifyDataSetChanged()
                 Toast.makeText(activity!!.applicationContext, "OBSERVING", Toast.LENGTH_SHORT)
                     .show()
             })

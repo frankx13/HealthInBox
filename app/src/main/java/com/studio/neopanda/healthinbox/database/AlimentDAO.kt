@@ -6,7 +6,7 @@ import androidx.room.*
 @Dao
 interface AlimentDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.ABORT)
     fun insert(aliment: Aliment)
 
     @Update

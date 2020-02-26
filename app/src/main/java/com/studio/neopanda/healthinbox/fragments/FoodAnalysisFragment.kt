@@ -3,20 +3,29 @@ package com.studio.neopanda.healthinbox.fragments
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.studio.neopanda.healthinbox.CustomMarker
 import com.studio.neopanda.healthinbox.R
+import com.studio.neopanda.healthinbox.database.Aliment
+import com.studio.neopanda.healthinbox.database.AlimentDatabase
+import com.studio.neopanda.healthinbox.database.Meal
+import com.studio.neopanda.healthinbox.database.MealDao
 import kotlinx.android.synthetic.main.fragment_food_analysis.*
 
 
 class FoodAnalysisFragment : Fragment() {
+
+    private lateinit var mealDao: MealDao
+    private var allMeals: LiveData<List<Meal>>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,11 +38,20 @@ class FoodAnalysisFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val database = AlimentDatabase.getInstance(activity!!.applicationContext)
+        mealDao = database.mealDao()
+        allMeals = mealDao.allMeals
+
+        Log.e("MEALS", "" + allMeals!!.value.toString())
+
+
         //Part1
         val entries = ArrayList<Entry>()
 
         //Part2
         entries.add(Entry(1f, 2855f))
+        entries.add(Entry(1f, 1850f))
+        entries.add(Entry(1f, 3950f))
         entries.add(Entry(2f, 2355f))
         entries.add(Entry(3f, 1950f))
         entries.add(Entry(4f, 2130f))

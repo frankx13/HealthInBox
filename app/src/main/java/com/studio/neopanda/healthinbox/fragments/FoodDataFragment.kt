@@ -51,8 +51,9 @@ class FoodDataFragment : Fragment() {
         alimentViewModel!!.getAllAliments().observe(
             this,
             Observer<List<Aliment>>(fun(aliments: List<Aliment>) {
+                adapter.submitList(null)
+                adapter.notifyDataSetChanged()
                 adapter.submitList(aliments) //even though aliments exist, they are not displayed unless we add something (= until the observer notify a change)
-
                 adapter.notifyDataSetChanged()
                 recyclerView.smoothScrollToPosition(adapter.itemCount)
 

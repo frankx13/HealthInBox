@@ -3,6 +3,7 @@ package com.studio.neopanda.healthinbox.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -31,6 +32,18 @@ class RecipesAdapter : ListAdapter<Recipe, RecipesAdapter.RecipeHolder>(DiffCall
         //TODO display all ingredients
         holder.ingredients.text = currentRecipe.ingredients[0].toString()
         holder.instructions.text = currentRecipe.instructions
+
+        holder.displayHideInstructionsBtn.setOnClickListener {
+            if (holder.instructions.visibility == View.VISIBLE){
+                holder.instructions.visibility = View.GONE
+                holder.displayHideInstructionsBtn.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_add_black_24dp, 0)
+                holder.displayHideInstructionsBtn.text = "Instructions : Show "
+            } else {
+                holder.instructions.visibility = View.VISIBLE
+                holder.displayHideInstructionsBtn.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_indeterminate_check_box_black_24dp, 0)
+                holder.displayHideInstructionsBtn.text = "Instructions : Hide "
+            }
+        }
     }
 
     fun getRecipeAt(position: Int): Recipe {
@@ -64,6 +77,7 @@ class RecipesAdapter : ListAdapter<Recipe, RecipesAdapter.RecipeHolder>(DiffCall
         val difficulty: TextView = itemView.findViewById(R.id.tv_recipe_difficulty)
         val ingredients: TextView = itemView.findViewById(R.id.tv_recipe_ingredients_details)
         val instructions: TextView = itemView.findViewById(R.id.tv_recipe_instructions_details)
+        val displayHideInstructionsBtn: Button = itemView.findViewById(R.id.btn_display_show_instructions)
 
         init {
             itemView.setOnClickListener {
