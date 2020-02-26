@@ -1,6 +1,7 @@
 package com.studio.neopanda.healthinbox.fragments
 
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -32,21 +33,46 @@ class FoodAnalysisFragment : Fragment() {
         val entries = ArrayList<Entry>()
 
         //Part2
-        entries.add(Entry(1f, 10f))
-        entries.add(Entry(2f, 2f))
-        entries.add(Entry(3f, 7f))
-        entries.add(Entry(4f, 20f))
-        entries.add(Entry(5f, 16f))
+        entries.add(Entry(1f, 2855f))
+        entries.add(Entry(2f, 2355f))
+        entries.add(Entry(3f, 1950f))
+        entries.add(Entry(4f, 2130f))
+        entries.add(Entry(5f, 1780f))
+        entries.add(Entry(6f, 2250f))
+        entries.add(Entry(7f, 1985f))
+        entries.add(Entry(8f, 1995f))
+        entries.add(Entry(9f, 2450f))
+        entries.add(Entry(10f, 1500f))
+        entries.add(Entry(11f, 2500f))
+        entries.add(Entry(12f, 2000f))
+        entries.add(Entry(13f, 2350f))
+        entries.add(Entry(14f, 2955f))
+        entries.add(Entry(15f, 1785f))
+        entries.add(Entry(16f, 1815f))
+        entries.add(Entry(17f, 1965f))
+        entries.add(Entry(18f, 2450f))
+        entries.add(Entry(19f, 2780f))
+        entries.add(Entry(20f, 3150f))
+        entries.add(Entry(21f, 3050f))
+        entries.add(Entry(22f, 2585f))
+        entries.add(Entry(23f, 3350f))
+        entries.add(Entry(24f, 2450f))
+        entries.add(Entry(25f, 2100f))
 
         //Part3
-        val vl = LineDataSet(entries, "My Type")
+        val vl = LineDataSet(entries, "Calories")
 
         //Part4
         vl.setDrawValues(false)
         vl.setDrawFilled(true)
         vl.lineWidth = 3f
-        vl.fillColor = R.color.colorPrimary
+        vl.fillColor = Color.BLUE
         vl.fillAlpha = R.color.colorAccent
+        vl.color = Color.WHITE
+        vl.setCircleColor(Color.BLACK)
+        vl.circleHoleColor = Color.CYAN
+        vl.valueTextSize = 18f
+        vl.valueTextColor = Color.BLACK
 
         //Part5
         lineChart.xAxis.labelRotationAngle = 0f
@@ -55,23 +81,33 @@ class FoodAnalysisFragment : Fragment() {
         lineChart.data = LineData(vl)
 
         //Part7
-        val j = 0.01f
+        val j = 30f
         lineChart.axisRight.isEnabled = false
-        lineChart.xAxis.axisMaximum = j+0.1f
+        lineChart.xAxis.axisMaximum = j + 0.1f
 
         //Part8
         lineChart.setTouchEnabled(true)
         lineChart.setPinchZoom(true)
 
         //Part9
-        lineChart.description.text = "Days"
-        lineChart.setNoDataText("No forex yet!")
+        lineChart.description.text = " Days ---------->"
+        lineChart.description.textSize = 18f
+        lineChart.description.textColor = Color.WHITE
+        lineChart.setNoDataText("No data to analyze.")
 
         //Part10
-        lineChart.animateX(1800, Easing.EaseInExpo)
+        lineChart.animateX(2200, Easing.EaseInExpo)
 
         //Part11
         val markerView = CustomMarker(activity!!, R.layout.marker_view)
         lineChart.marker = markerView
+
+        setExitBtn()
+    }
+
+    private fun setExitBtn() {
+        btn_exit_food_analysis.setOnClickListener {
+            activity!!.onBackPressed()
+        }
     }
 }

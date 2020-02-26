@@ -3,9 +3,12 @@
     <item>
         <shape>
             <gradient
-                android:startColor="@color/colorPrimary"
-                android:endColor="@color/colorPrimaryDark"
+                android:startColor="#44E0E9"
+                android:endColor="#47C4FF"
                 android:angle="180"/>
+            <stroke
+                android:color="@android:color/black"
+                android:width="3dp"/>
         </shape>
     </item>
 </selector>
