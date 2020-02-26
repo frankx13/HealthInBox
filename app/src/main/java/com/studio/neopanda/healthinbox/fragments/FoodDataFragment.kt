@@ -4,7 +4,6 @@ package com.studio.neopanda.healthinbox.fragments
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,10 +18,8 @@ import com.studio.neopanda.healthinbox.AddEditAlimentActivity
 import com.studio.neopanda.healthinbox.R
 import com.studio.neopanda.healthinbox.adapters.AlimentAdapter
 import com.studio.neopanda.healthinbox.database.Aliment
-import com.studio.neopanda.healthinbox.database.AlimentDatabase
 import com.studio.neopanda.healthinbox.database.AlimentViewModel
 import kotlinx.android.synthetic.main.fragment_food_data.*
-import kotlinx.android.synthetic.main.fragment_food_history.*
 
 class FoodDataFragment : Fragment() {
     private var alimentViewModel: AlimentViewModel? = null
@@ -54,7 +51,11 @@ class FoodDataFragment : Fragment() {
         alimentViewModel!!.getAllAliments().observe(
             this,
             Observer<List<Aliment>>(fun(aliments: List<Aliment>) {
-                adapter.submitList(aliments)
+                adapter.submitList(aliments) //even though aliments exist, they are not displayed unless we add something (= until the observer notify a change)
+
+                adapter.notifyDataSetChanged()
+                recyclerView.smoothScrollToPosition(adapter.itemCount)
+
                 Toast.makeText(activity!!.applicationContext, "OBSERVING", Toast.LENGTH_SHORT)
                     .show()
             })

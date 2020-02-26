@@ -34,6 +34,10 @@ android {
     }
 }
 
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -69,4 +73,7 @@ dependencies {
     def persistence_version = "2.2.3"
     implementation "android.arch.persistence.room:runtime:$persistence_version"
     kapt "android.arch.persistence.room:runtime:$persistence_version"
+
+    //Line Chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

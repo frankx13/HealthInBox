@@ -2,13 +2,14 @@ package com.studio.neopanda.healthinbox.database
 
 import android.content.Context
 import android.os.AsyncTask
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 
 
-@Database(entities = [Aliment::class, Recipe::class, Meal::class], version = 7, exportSchema = false)
+@Database(entities = [Aliment::class, Recipe::class, Meal::class], version = 8, exportSchema = false)
 abstract class AlimentDatabase : RoomDatabase() {
 
     abstract fun alimentDao(): AlimentDao
@@ -25,7 +26,7 @@ abstract class AlimentDatabase : RoomDatabase() {
                     context.applicationContext,
                     AlimentDatabase::class.java, "aliments_database"
                 )
-                    .fallbackToDestructiveMigration() // not calling AsyncTask
+                    .fallbackToDestructiveMigration()
                     .addCallback(roomCallback)
                     .build()
             }
@@ -35,14 +36,16 @@ abstract class AlimentDatabase : RoomDatabase() {
 
         private val roomCallback = object : RoomDatabase.Callback() {
             override fun onCreate(db: SupportSQLiteDatabase) {
-
                 super.onCreate(db)
+
+                PopulateDBAsyncTask(instance!!).execute()
+                Log.e("DBMANAGEMENT", "DATABASE ONCREATE")
             }
 
             override fun onOpen(db: SupportSQLiteDatabase) {
                 super.onOpen(db)
 
-                PopulateDBAsyncTask(instance!!).execute()
+                Log.e("DBMANAGEMENT", "DATABASE ONOPEN")
             }
         }
 
