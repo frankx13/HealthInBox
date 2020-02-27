@@ -25,8 +25,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_toStartOf="@id/text_view_weight"
-            android:ellipsize="end"
-            android:maxLines="1"
+            android:ellipsize="marquee"
+            android:maxLength="15"
             android:text="@string/name_sample"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 

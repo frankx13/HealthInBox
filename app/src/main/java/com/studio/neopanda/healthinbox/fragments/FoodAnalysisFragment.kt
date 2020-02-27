@@ -16,6 +16,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.github.mikephil.charting.animation.Easing
+import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
@@ -23,9 +24,9 @@ import com.studio.neopanda.healthinbox.CustomMarker
 import com.studio.neopanda.healthinbox.R
 import com.studio.neopanda.healthinbox.database.AlimentDatabase
 import com.studio.neopanda.healthinbox.database.Meal
+import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_food_analysis.*
 import java.lang.ref.WeakReference
-
 
 class FoodAnalysisFragment : Fragment() {
 
@@ -46,85 +47,7 @@ class FoodAnalysisFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //Create the values table
-//        val entries = ArrayList<Entry>()
-
-        AgentAsyncTask(activity).execute()
-
-        //Fill values table with hardcoded values
-        //TODO replace with DB data
-//        entries.add(Entry(1f, 2855f))
-//        entries.add(Entry(1f, 1850f))
-//        entries.add(Entry(1f, 3950f))
-//        entries.add(Entry(2f, 2355f))
-//        entries.add(Entry(3f, 1950f))
-//        entries.add(Entry(4f, 2130f))
-//        entries.add(Entry(5f, 1780f))
-//        entries.add(Entry(6f, 2250f))
-//        entries.add(Entry(7f, 1985f))
-//        entries.add(Entry(8f, 1995f))
-//        entries.add(Entry(9f, 2450f))
-//        entries.add(Entry(10f, 1500f))
-//        entries.add(Entry(11f, 2500f))
-//        entries.add(Entry(12f, 2000f))
-//        entries.add(Entry(13f, 2350f))
-//        entries.add(Entry(14f, 2955f))
-//        entries.add(Entry(15f, 1785f))
-//        entries.add(Entry(16f, 1815f))
-//        entries.add(Entry(17f, 1965f))
-//        entries.add(Entry(18f, 2450f))
-//        entries.add(Entry(19f, 2780f))
-//        entries.add(Entry(20f, 3150f))
-//        entries.add(Entry(21f, 3050f))
-//        entries.add(Entry(22f, 2585f))
-//        entries.add(Entry(23f, 3350f))
-//        entries.add(Entry(24f, 2450f))
-//        entries.add(Entry(25f, 2100f))
-
-        //Create the parameters table of the chart
-//        val vl = LineDataSet(entries, "Calories")
-
-        //Fill the parameters of the table
-//        vl.setDrawValues(false)
-//        vl.setDrawFilled(true)
-//        vl.lineWidth = 3f
-//        vl.fillColor = Color.BLUE
-//        vl.fillAlpha = R.color.colorAccent
-//        vl.color = Color.WHITE
-//        vl.setCircleColor(Color.BLACK)
-//        vl.circleHoleColor = Color.CYAN
-//        vl.valueTextSize = 18f
-//        vl.valueTextColor = Color.BLACK
-
-//        //Set the rotation on the X axis
-//        lineChart.xAxis.labelRotationAngle = 0f
-//
-//        //Add parameters to the chart
-//        lineChart.data = LineData(vl)
-//
-//        //Assign the number of rows max
-//        val j = 26f
-//
-//        //Disable the right axis and apply the maxnumber of rows
-//        lineChart.axisRight.isEnabled = false
-//        lineChart.xAxis.axisMaximum = j + 0.1f
-//
-//        //Allow Touch and Zoom events
-//        lineChart.setTouchEnabled(true)
-//        lineChart.setPinchZoom(true)
-//
-//        //Add description to the chart
-//        lineChart.description.text = " Days ---------->"
-//        lineChart.description.textSize = 18f
-//        lineChart.description.textColor = Color.WHITE
-//        lineChart.setNoDataText("No data to analyze.")
-//
-//        //Add animation to display the chart graphics
-//        lineChart.animateX(2200, Easing.EaseInExpo)
-//
-//        //Add a marker to draw the chart
-//        val markerView = CustomMarker(activity!!, R.layout.marker_view)
-//        lineChart.marker = markerView
+        ChartDataAsyncTask(activity).execute()
 
         setExitBtn()
     }
@@ -160,6 +83,7 @@ class FoodAnalysisFragment : Fragment() {
             vl.valueTextSize = 18f
             vl.valueTextColor = Color.BLACK
 
+            val lineChart: LineChart = activity!!.findViewById(R.id.lineChart)
             //Set the rotation on the X axis
             lineChart.xAxis.labelRotationAngle = 0f
 
@@ -167,7 +91,7 @@ class FoodAnalysisFragment : Fragment() {
             lineChart.data = LineData(vl)
 
             //Assign the number of rows max
-            val j = counter+2f
+            val j = counter + 2f
 
             //Disable the right axis and apply the maxnumber of rows
             lineChart.axisRight.isEnabled = false
@@ -218,7 +142,7 @@ class FoodAnalysisFragment : Fragment() {
         }
     }
 
-    class AgentAsyncTask(
+    class ChartDataAsyncTask(
         activity: Activity?
     ) : AsyncTask<Void, Void, Void>() {
         private var allMealsStored: List<Meal>? = null
