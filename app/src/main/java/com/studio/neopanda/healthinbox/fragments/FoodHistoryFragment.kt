@@ -48,6 +48,7 @@ class FoodHistoryFragment : Fragment() {
         recyclerView.adapter = adapter
 
         //OBSERVE MEALS
+        //bug is probably in the DAO where no method to access all meals is made
         mealViewModel = ViewModelProviders.of(this).get(MealViewModel::class.java)
         mealViewModel!!.getAllMeals().observe(
             this,

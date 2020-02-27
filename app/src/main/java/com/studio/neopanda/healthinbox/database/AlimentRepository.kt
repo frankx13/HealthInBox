@@ -1,8 +1,8 @@
 package com.studio.neopanda.healthinbox.database
 
+import android.app.Application
 import android.os.AsyncTask
 import androidx.lifecycle.LiveData
-import android.app.Application
 
 
 class AlimentRepository(application: Application) {
@@ -33,6 +33,11 @@ class AlimentRepository(application: Application) {
 
     fun getAllAliments(): LiveData<List<Aliment>> {
         return allAliments
+    }
+
+    fun searchAliments(search: String): List<Aliment> {
+        val list: List<Aliment>? = null
+        return list!!
     }
 
     private class InsertAlimentAsyncTask internal constructor(private val alimentDao: AlimentDao) :
@@ -68,6 +73,14 @@ class AlimentRepository(application: Application) {
         override fun doInBackground(vararg voids: Void): Void? {
             alimentDao.deleteAllAliments()
             return null
+        }
+    }
+
+    private class SearchAlimentsAsyncTask internal constructor(private val alimentDao: AlimentDao) :
+        AsyncTask<String, Void, List<Aliment>>() {
+
+        override fun doInBackground(vararg params: String?): List<Aliment> {
+            return alimentDao.searchAliments(params[0])
         }
     }
 }

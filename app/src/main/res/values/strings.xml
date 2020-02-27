@@ -74,5 +74,14 @@
     <string name="hard">Hard</string>
     <string name="_5m">5m</string>
     <string name="_5">5</string>
+    <string name="what_are_you_searching">What are you searching ?</string>
+    <string name="enter_a_keyword_here">Enter a keyword here</string>
+    <string name="launch_search">Launch Search</string>
+    <string name="no_result_found_text">No results found in the database. Do you wish to add \'keyword\' as a new Aliment ?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="result_found_text">3 results found :</string>
+    <string name="calories_inside_aliment_prompt">How many calories contains this aliment in 100g ?</string>
+    <string name="next">Next</string>
 
 </resources>

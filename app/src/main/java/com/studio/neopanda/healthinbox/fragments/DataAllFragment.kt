@@ -56,12 +56,11 @@ class DataAllFragment : Fragment() {
         alimentViewModel!!.getAllAliments().observe(
             this,
             Observer<List<Aliment>>(fun(aliments: List<Aliment>) {
-                aliments.sortedBy { it.name }
                 adapter.submitList(null)
                 adapter.notifyDataSetChanged()
                 adapter.submitList(aliments) //even though aliments exist, they are not displayed unless we add something (= until the observer notify a change)
                 adapter.notifyDataSetChanged()
-                recyclerView.smoothScrollToPosition(adapter.itemCount)
+//                recyclerView.smoothScrollToPosition(adapter.itemCount)
 
                 Toast.makeText(parentFragment!!.activity!!.applicationContext, "OBSERVING", Toast.LENGTH_SHORT)
                     .show()

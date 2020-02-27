@@ -20,4 +20,7 @@ interface AlimentDao {
 
     @get:Query("SELECT * FROM aliments_table ORDER BY name DESC")
     val allAliments: LiveData<List<Aliment>>
+
+    @Query("SELECT * FROM aliments_table WHERE name LIKE :search")
+    fun searchAliments(search: String?): List<Aliment>
 }

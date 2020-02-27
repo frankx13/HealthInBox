@@ -32,4 +32,8 @@ class AlimentViewModel(application: Application) : AndroidViewModel(application)
     fun getAllAliments(): LiveData<List<Aliment>> {
         return allAliments
     }
+
+    fun searchAliments(search: String): List<Aliment> {
+        return repository.searchAliments(search)
+    }
 }
