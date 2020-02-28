@@ -37,7 +37,7 @@ class MealRepository(application: Application) {
     }
 
     fun getAllMealsStored(): List<Meal> {
-        return allMealsStored
+        return allMealsStored // Need to fetch it in AsyncTask
     }
 
     private class InsertMealAsyncTask internal constructor(private val mealDao: MealDao) :

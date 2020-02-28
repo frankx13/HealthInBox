@@ -65,6 +65,5 @@ class AlimentAdapter : ListAdapter<Aliment, AlimentAdapter.AlimentHolder>(DiffCa
                 }
             }
         }
-
     }
 }

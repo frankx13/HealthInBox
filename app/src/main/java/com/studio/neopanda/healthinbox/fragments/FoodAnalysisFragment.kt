@@ -120,7 +120,6 @@ class FoodAnalysisFragment : Fragment() {
         manager = LocalBroadcastManager.getInstance(context!!)
         val receiver = MyBroadCastReceiver()
         val filter = IntentFilter()
-        //whatever
         filter.addAction("com.action.test")
         manager.registerReceiver(receiver, filter)
     }

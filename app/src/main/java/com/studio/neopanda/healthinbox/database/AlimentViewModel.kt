@@ -1,5 +1,6 @@
 package com.studio.neopanda.healthinbox.database
 
+import android.app.Activity
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -33,7 +34,7 @@ class AlimentViewModel(application: Application) : AndroidViewModel(application)
         return allAliments
     }
 
-    fun searchAliments(search: String): List<Aliment> {
-        return repository.searchAliments(search)
+    fun searchAliments(search: String, activity: Activity) {
+        repository.searchAliments(search, activity)
     }
 }
