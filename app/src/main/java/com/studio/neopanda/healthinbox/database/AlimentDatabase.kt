@@ -356,6 +356,28 @@ abstract class AlimentDatabase : RoomDatabase() {
                         200
                     )
                 )
+                recipeDao.insert(
+                    Recipe(
+                        "Indian Chicken",
+                        "- 350g Breast Chicken\n- 10g Curry\n- Salt\n- Pepper\n- 5g Paprika",
+                        "1. Cut the chicken in 3x3cm dices.\n2. Put the chicken dices inside a bowl and add the salt, pepper, paprika, curry and mix them up.\n3. Fry the content in a pan for 5 mn (fast cooking).\n4. Serve hot, sexy chicken on da table.",
+                        4,
+                        1,
+                        8,
+                        10
+                    )
+                )
+                recipeDao.insert(
+                    Recipe(
+                        "The Gravedigger's cocktail",
+                        "- 2cl Whiskey\n- 2cl Vodka\n- 2cl Pastis\n- 2 cl Rum\n- 2cl Gin\n- 2 cubes of ice",
+                        "1. Mix all the alcools into a glass.\n2. Add the ice.\n3. Drink and hope not to die.",
+                        1,
+                        1,
+                        5,
+                        1
+                    )
+                )
 
                 return null
             }
