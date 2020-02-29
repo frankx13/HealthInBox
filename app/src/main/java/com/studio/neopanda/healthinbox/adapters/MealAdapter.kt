@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.studio.neopanda.healthinbox.R
-import com.studio.neopanda.healthinbox.database.Meal
+import com.studio.neopanda.healthinbox.database.entities.Meal
 
 class MealsAdapter : ListAdapter<Meal, MealsAdapter.MealHolder>(DiffCallback()) {
 

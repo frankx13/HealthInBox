@@ -6,7 +6,7 @@
 
     <string name="sign_in">Sign In</string>
     <string name="sign_in_dropbox">SIGN IN - DropBox</string>
-    <string name="name">Name</string>
+    <string name="calories_prompted_searchadd">Calories</string>
     <string name="email">Email</string>
     <string name="imageone">imageOne</string>
     <string name="submit">Submit</string>
@@ -84,5 +84,6 @@
     <string name="calories_inside_aliment_prompt">How many calories contains this aliment in 100g ?</string>
     <string name="next">Next</string>
     <string name="default_weight">100</string>
+    <string name="name">Name</string>
 
 </resources>

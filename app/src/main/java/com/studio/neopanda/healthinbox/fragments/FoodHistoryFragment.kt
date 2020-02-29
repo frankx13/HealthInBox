@@ -18,8 +18,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.studio.neopanda.healthinbox.AddEditMealActivity
 import com.studio.neopanda.healthinbox.R
 import com.studio.neopanda.healthinbox.adapters.MealsAdapter
-import com.studio.neopanda.healthinbox.database.Meal
-import com.studio.neopanda.healthinbox.database.MealViewModel
+import com.studio.neopanda.healthinbox.database.entities.Meal
+import com.studio.neopanda.healthinbox.database.viewmodels.MealViewModel
 import kotlinx.android.synthetic.main.fragment_food_history.*
 
 class FoodHistoryFragment : Fragment() {
@@ -117,7 +117,8 @@ class FoodHistoryFragment : Fragment() {
             val date = data.getStringExtra(AddEditMealActivity.EXTRA_DATE)
             val calories = data.getIntExtra(AddEditMealActivity.EXTRA_CALORIES, 1)
 
-            val meal = Meal(name!!, date!!, calories)
+            val meal =
+                Meal(name!!, date!!, calories)
             mealViewModel!!.insert(meal)
 
             Toast.makeText(activity, "Meal saved", Toast.LENGTH_SHORT).show()
@@ -132,7 +133,8 @@ class FoodHistoryFragment : Fragment() {
             val date = data.getStringExtra(AddEditMealActivity.EXTRA_DATE)
             val calories = data.getIntExtra(AddEditMealActivity.EXTRA_CALORIES, 1)
 
-            val meal = Meal(name!!, date!!, calories)
+            val meal =
+                Meal(name!!, date!!, calories)
             meal.id = id
             mealViewModel!!.update(meal)
 

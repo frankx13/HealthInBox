@@ -21,7 +21,7 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.studio.neopanda.healthinbox.CustomMarker
 import com.studio.neopanda.healthinbox.R
-import com.studio.neopanda.healthinbox.database.MealViewModel
+import com.studio.neopanda.healthinbox.database.viewmodels.MealViewModel
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_food_analysis.*
 

@@ -1,7 +1,8 @@
-package com.studio.neopanda.healthinbox.database
+package com.studio.neopanda.healthinbox.database.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.studio.neopanda.healthinbox.database.entities.Meal
 
 @Dao
 interface MealDao {

@@ -14,19 +14,12 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.studio.neopanda.healthinbox.AddEditAlimentActivity
 import com.studio.neopanda.healthinbox.AddEditRecipeActivity
 import com.studio.neopanda.healthinbox.R
-import com.studio.neopanda.healthinbox.adapters.AlimentAdapter
 import com.studio.neopanda.healthinbox.adapters.RecipesAdapter
-import com.studio.neopanda.healthinbox.database.Aliment
-import com.studio.neopanda.healthinbox.database.AlimentViewModel
-import com.studio.neopanda.healthinbox.database.Recipe
-import com.studio.neopanda.healthinbox.database.RecipeViewModel
-import kotlinx.android.synthetic.main.fragment_food_data.*
-import kotlinx.android.synthetic.main.fragment_food_history.*
+import com.studio.neopanda.healthinbox.database.entities.Recipe
+import com.studio.neopanda.healthinbox.database.viewmodels.RecipeViewModel
 import kotlinx.android.synthetic.main.fragment_food_recipes.*
-import kotlinx.android.synthetic.main.item_recipe.*
 
 
 class FoodRecipesFragment : Fragment() {
@@ -132,7 +125,15 @@ class FoodRecipesFragment : Fragment() {
             val ingredients = data.getStringExtra(AddEditRecipeActivity.EXTRA_INGREDIENTS)
             val instructions = data.getStringExtra(AddEditRecipeActivity.EXTRA_INSTRUCTIONS)
 
-            val recipe = Recipe(name!!, ingredients!!, instructions!!, people, difficulty, cost, time)
+            val recipe = Recipe(
+                name!!,
+                ingredients!!,
+                instructions!!,
+                people,
+                difficulty,
+                cost,
+                time
+            )
             recipesViewModel!!.insert(recipe)
 
             Toast.makeText(activity, "Recipe saved", Toast.LENGTH_SHORT).show()
@@ -151,7 +152,15 @@ class FoodRecipesFragment : Fragment() {
             val ingredients = data.getStringExtra(AddEditRecipeActivity.EXTRA_INGREDIENTS)
             val instructions = data.getStringExtra(AddEditRecipeActivity.EXTRA_INSTRUCTIONS)
 
-            val recipe = Recipe(name!!, ingredients!!, instructions!!, people, difficulty, cost, time)
+            val recipe = Recipe(
+                name!!,
+                ingredients!!,
+                instructions!!,
+                people,
+                difficulty,
+                cost,
+                time
+            )
             recipe.id = id
             recipesViewModel!!.insert(recipe)
 

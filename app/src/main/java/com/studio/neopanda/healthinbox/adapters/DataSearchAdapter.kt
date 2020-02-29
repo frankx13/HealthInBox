@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.studio.neopanda.healthinbox.R
-import com.studio.neopanda.healthinbox.database.Aliment
+import com.studio.neopanda.healthinbox.database.entities.Aliment
 
 class DataSearchAdapter(private var mContext: Context, private var mData: List<Aliment>) : RecyclerView.Adapter<DataSearchAdapter.DataSearchViewHolder>() {
 

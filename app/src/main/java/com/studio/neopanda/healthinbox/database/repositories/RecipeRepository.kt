@@ -1,33 +1,47 @@
-package com.studio.neopanda.healthinbox.database
+package com.studio.neopanda.healthinbox.database.repositories
 
 import android.app.Application
 import android.os.AsyncTask
 import androidx.lifecycle.LiveData
+import com.studio.neopanda.healthinbox.database.AlimentDatabase
+import com.studio.neopanda.healthinbox.database.dao.RecipeDao
+import com.studio.neopanda.healthinbox.database.entities.Recipe
 
 class RecipeRepository(application: Application) {
     private val recipeDao: RecipeDao
     private val allRecipes: LiveData<List<Recipe>>
 
     init {
-        val database = AlimentDatabase.getInstance(application)
+        val database =
+            AlimentDatabase.getInstance(
+                application
+            )
         recipeDao = database.recipeDao()
         allRecipes = recipeDao.allRecipes
     }
 
     fun insert(recipe: Recipe) {
-        InsertRecipeAsyncTask(recipeDao).execute(recipe)
+        InsertRecipeAsyncTask(
+            recipeDao
+        ).execute(recipe)
     }
 
     fun update(recipe: Recipe) {
-        UpdateRecipeAsyncTask(recipeDao).execute(recipe)
+        UpdateRecipeAsyncTask(
+            recipeDao
+        ).execute(recipe)
     }
 
     fun delete(recipe: Recipe) {
-        DeleteRecipeAsyncTask(recipeDao).execute(recipe)
+        DeleteRecipeAsyncTask(
+            recipeDao
+        ).execute(recipe)
     }
 
     fun deleteAllRecipes() {
-        DeleteAllRecipesAsyncTask(recipeDao).execute()
+        DeleteAllRecipesAsyncTask(
+            recipeDao
+        ).execute()
     }
 
     fun getAllRecipes(): LiveData<List<Recipe>> {

@@ -1,11 +1,14 @@
-package com.studio.neopanda.healthinbox.database
+package com.studio.neopanda.healthinbox.database.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import com.studio.neopanda.healthinbox.database.entities.Recipe
+import com.studio.neopanda.healthinbox.database.repositories.RecipeRepository
 
 class RecipeViewModel(application: Application) : AndroidViewModel(application) {
-    private val repository: RecipeRepository = RecipeRepository(application)
+    private val repository: RecipeRepository =
+        RecipeRepository(application)
 
     private var allRecipes: LiveData<List<Recipe>>
 

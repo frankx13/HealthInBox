@@ -18,14 +18,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.studio.neopanda.healthinbox.R
 import com.studio.neopanda.healthinbox.adapters.DataSearchAdapter
-import com.studio.neopanda.healthinbox.database.Aliment
-import com.studio.neopanda.healthinbox.database.AlimentViewModel
+import com.studio.neopanda.healthinbox.database.entities.Aliment
+import com.studio.neopanda.healthinbox.database.viewmodels.AlimentViewModel
 import kotlinx.android.synthetic.main.fragment_data_search.*
 
 class DataSearchFragment : Fragment() {
 
     private var alimentNameInputToStock: String = ""
-    private var alimentInputToRead: String = ""
     private var alimentCaloriesInput = 0
     private var alimentWeight = 100
     private var alimentViewModel: AlimentViewModel? = null
@@ -81,7 +80,7 @@ class DataSearchFragment : Fragment() {
                 )
                 Toast.makeText(
                     parentFragment!!.activity!!.applicationContext,
-                    "The $alimentInputToRead has been added to your database!",
+                    "The $alimentNameInputToStock has been added to your database!",
                     Toast.LENGTH_LONG
                 ).show()
                 container_add_aliment_search.visibility = View.GONE
@@ -112,8 +111,8 @@ class DataSearchFragment : Fragment() {
         clearSearchParams()
         btn_validate_aliment_search_input.setOnClickListener {
             alimentNameInputToStock =
-                "%" + et_search_aliment_input.editableText.toString().trim() + "%"
-            alimentInputToRead = et_search_aliment_input.editableText.toString().trim()
+                et_search_aliment_input.editableText.toString().trim().capitalize()
+
             alimentViewModel!!.searchAliments(alimentNameInputToStock, parentFragment!!.activity!!)
         }
     }
@@ -145,23 +144,27 @@ class DataSearchFragment : Fragment() {
             Log.e("BROADCAST RECEIVED", "AlimNamesList : " + alimentsNamesList.toString())
             Log.e("BROADCAST RECEIVED", "AlimCalsList : " + alimentsCaloriesList.toString())
 
-            if (alimentsNamesList!!.isNotEmpty() && alimentsCaloriesList!!.isNotEmpty()){
+            if (alimentsNamesList!!.isNotEmpty() && alimentsCaloriesList!!.isNotEmpty()) {
                 isAlimentFound = true
             }
 
             if (isAlimentFound) {
-                tv_aliment_search_result.text = alimentsNamesList!!.size.toString() + " aliments found"
+                tv_aliment_search_result.text =
+                    alimentsNamesList!!.size.toString() + " aliments found"
                 tv_aliment_search_result.visibility = View.VISIBLE
 
                 buildAlimentsFound()
 
-                val adapter = DataSearchAdapter(parentFragment!!.activity!!.applicationContext, alimentsSearched)
+                val adapter = DataSearchAdapter(
+                    parentFragment!!.activity!!.applicationContext,
+                    alimentsSearched
+                )
                 recyclerViewSearchFound.adapter = adapter
                 recyclerViewSearchFound.visibility = View.VISIBLE
 
             } else {
                 tv_aliment_search_result.text =
-                    "No results found in the database. Do you wish to add $alimentInputToRead as a new Aliment ?"
+                    "No results found in the database. Do you wish to add $alimentNameInputToStock as a new Aliment ?"
                 tv_aliment_search_result.visibility = View.VISIBLE
                 container_no_result_prompts.visibility = View.VISIBLE
             }
@@ -170,8 +173,14 @@ class DataSearchFragment : Fragment() {
 
     private fun buildAlimentsFound() {
         alimentsSearched = ArrayList()
-        for (i in 0 until alimentsNamesList!!.size){
-            alimentsSearched.add(Aliment(alimentsNamesList!![i], alimentsCaloriesList!![i], 100))
+        for (i in 0 until alimentsNamesList!!.size) {
+            alimentsSearched.add(
+                Aliment(
+                    alimentsNamesList!![i],
+                    alimentsCaloriesList!![i],
+                    100
+                )
+            )
         }
     }
 
@@ -182,9 +191,8 @@ class DataSearchFragment : Fragment() {
         }
     }
 
-    private fun clearSearchParams(){
+    private fun clearSearchParams() {
         alimentNameInputToStock = ""
-        alimentInputToRead = ""
         alimentCaloriesInput = 0
         alimentWeight = 100
         isAlimentFound = false

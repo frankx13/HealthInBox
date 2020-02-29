@@ -1,4 +1,4 @@
-package com.studio.neopanda.healthinbox.database
+package com.studio.neopanda.healthinbox.database.repositories
 
 import android.app.Activity
 import android.app.Application
@@ -7,6 +7,9 @@ import android.os.AsyncTask
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.studio.neopanda.healthinbox.database.AlimentDatabase
+import com.studio.neopanda.healthinbox.database.dao.MealDao
+import com.studio.neopanda.healthinbox.database.entities.Meal
 import java.lang.ref.WeakReference
 
 class MealRepository(application: Application) {
@@ -14,25 +17,36 @@ class MealRepository(application: Application) {
     private val allMeals: LiveData<List<Meal>>
 
     init {
-        val database = AlimentDatabase.getInstance(application)
+        val database =
+            AlimentDatabase.getInstance(
+                application
+            )
         mealDao = database.mealDao()
         allMeals = mealDao.allMeals
     }
 
     fun insert(meal: Meal) {
-        InsertMealAsyncTask(mealDao).execute(meal)
+        InsertMealAsyncTask(
+            mealDao
+        ).execute(meal)
     }
 
     fun update(meal: Meal) {
-        UpdateMealAsyncTask(mealDao).execute(meal)
+        UpdateMealAsyncTask(
+            mealDao
+        ).execute(meal)
     }
 
     fun delete(meal: Meal) {
-        DeleteMealAsyncTask(mealDao).execute(meal)
+        DeleteMealAsyncTask(
+            mealDao
+        ).execute(meal)
     }
 
     fun deleteAllMeals() {
-        DeleteAllMealsAsyncTask(mealDao).execute()
+        DeleteAllMealsAsyncTask(
+            mealDao
+        ).execute()
     }
 
     fun getAllMeals(): LiveData<List<Meal>> {
@@ -40,7 +54,10 @@ class MealRepository(application: Application) {
     }
 
     fun getAllMealsStored(activity: Activity) {
-        GetStoredMealsAsyncTask(mealDao, activity).execute()
+        GetStoredMealsAsyncTask(
+            mealDao,
+            activity
+        ).execute()
     }
 
     private class InsertMealAsyncTask internal constructor(private val mealDao: MealDao) :

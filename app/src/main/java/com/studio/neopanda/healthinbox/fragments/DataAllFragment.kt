@@ -17,10 +17,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.studio.neopanda.healthinbox.AddEditAlimentActivity
 import com.studio.neopanda.healthinbox.R
 import com.studio.neopanda.healthinbox.adapters.AlimentAdapter
-import com.studio.neopanda.healthinbox.database.Aliment
-import com.studio.neopanda.healthinbox.database.AlimentViewModel
+import com.studio.neopanda.healthinbox.database.entities.Aliment
+import com.studio.neopanda.healthinbox.database.viewmodels.AlimentViewModel
 import kotlinx.android.synthetic.main.fragment_data_all.*
-import kotlinx.android.synthetic.main.fragment_food_data.*
 
 class DataAllFragment : Fragment() {
 
@@ -123,7 +122,8 @@ class DataAllFragment : Fragment() {
             val calories = data.getIntExtra(AddEditAlimentActivity.EXTRA_CALORIES, 1)
             val weight = data.getIntExtra(AddEditAlimentActivity.EXTRA_WEIGHT, 1)
 
-            val aliment = Aliment(name!!, calories, weight)
+            val aliment =
+                Aliment(name!!, calories, weight)
             alimentViewModel!!.insert(aliment)
 
             Toast.makeText(parentFragment!!.activity, "Aliment saved", Toast.LENGTH_SHORT).show()
@@ -138,7 +138,8 @@ class DataAllFragment : Fragment() {
             val calories = data.getIntExtra(AddEditAlimentActivity.EXTRA_CALORIES, 1)
             val weight = data.getIntExtra(AddEditAlimentActivity.EXTRA_WEIGHT, 1)
 
-            val aliment = Aliment(name!!, calories, weight)
+            val aliment =
+                Aliment(name!!, calories, weight)
             aliment.id = id
             alimentViewModel!!.update(aliment)
 

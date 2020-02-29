@@ -1,4 +1,4 @@
-package com.studio.neopanda.healthinbox.database
+package com.studio.neopanda.healthinbox.database.entities
 
 import androidx.room.Entity
 import androidx.room.Index

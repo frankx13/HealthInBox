@@ -1,4 +1,4 @@
-package com.studio.neopanda.healthinbox.database
+package com.studio.neopanda.healthinbox.database.repositories
 
 import android.app.Activity
 import android.app.Application
@@ -7,6 +7,9 @@ import android.os.AsyncTask
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.studio.neopanda.healthinbox.database.AlimentDatabase
+import com.studio.neopanda.healthinbox.database.dao.AlimentDao
+import com.studio.neopanda.healthinbox.database.entities.Aliment
 import java.lang.ref.WeakReference
 
 
@@ -15,25 +18,36 @@ class AlimentRepository(application: Application) {
     private val allAliments: LiveData<List<Aliment>>
 
     init {
-        val database = AlimentDatabase.getInstance(application)
+        val database =
+            AlimentDatabase.getInstance(
+                application
+            )
         alimentDao = database.alimentDao()
         allAliments = alimentDao.allAliments
     }
 
     fun insert(aliment: Aliment) {
-        InsertAlimentAsyncTask(alimentDao).execute(aliment)
+        InsertAlimentAsyncTask(
+            alimentDao
+        ).execute(aliment)
     }
 
     fun update(aliment: Aliment) {
-        UpdateAlimentAsyncTask(alimentDao).execute(aliment)
+        UpdateAlimentAsyncTask(
+            alimentDao
+        ).execute(aliment)
     }
 
     fun delete(aliment: Aliment) {
-        DeleteAlimentAsyncTask(alimentDao).execute(aliment)
+        DeleteAlimentAsyncTask(
+            alimentDao
+        ).execute(aliment)
     }
 
     fun deleteAllAliments() {
-        DeleteAllAlimentsAsyncTask(alimentDao).execute()
+        DeleteAllAlimentsAsyncTask(
+            alimentDao
+        ).execute()
     }
 
     fun getAllAliments(): LiveData<List<Aliment>> {
@@ -41,7 +55,11 @@ class AlimentRepository(application: Application) {
     }
 
     fun searchAliments(search: String, activity: Activity) {
-        SearchAlimentsAsyncTask(alimentDao, search, activity).execute()
+        SearchAlimentsAsyncTask(
+            alimentDao,
+            search,
+            activity
+        ).execute()
     }
 
     private class InsertAlimentAsyncTask internal constructor(private val alimentDao: AlimentDao) :
