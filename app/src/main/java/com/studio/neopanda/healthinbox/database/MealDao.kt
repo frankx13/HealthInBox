@@ -21,6 +21,6 @@ interface MealDao {
     @get:Query("SELECT * FROM meals_table ORDER BY date DESC")
     val allMeals: LiveData<List<Meal>>
 
-    @get:Query("SELECT * FROM meals_table ORDER BY date DESC")
-    val allMealsStored: List<Meal>
+    @Query("SELECT * FROM meals_table ORDER BY date DESC")
+    fun allMealsStored(): List<Meal>
 }

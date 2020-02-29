@@ -1,5 +1,6 @@
 package com.studio.neopanda.healthinbox.database
 
+import android.app.Activity
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -8,11 +9,9 @@ class MealViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: MealRepository = MealRepository(application)
 
     private var allMeals: LiveData<List<Meal>>
-    private var allMealsStored: List<Meal>
 
     init {
         allMeals = repository.getAllMeals()
-        allMealsStored = repository.getAllMealsStored()
     }
 
     fun insert(meal: Meal) {
@@ -35,7 +34,7 @@ class MealViewModel(application: Application) : AndroidViewModel(application) {
         return allMeals
     }
 
-    fun getAllMealsStored(): List<Meal>{
-        return allMealsStored
+    fun getAllMealsStored(activity: Activity){
+        repository.getAllMealsStored(activity)
     }
 }

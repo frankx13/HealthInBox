@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.Application
 import android.content.Intent
 import android.os.AsyncTask
-import android.os.Debug
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -81,9 +80,11 @@ class AlimentRepository(application: Application) {
         }
     }
 
-    private class SearchAlimentsAsyncTask internal constructor(private val alimentDao: AlimentDao,
-                                                               private val search: String,
-                                                               activity: Activity?) :
+    private class SearchAlimentsAsyncTask internal constructor(
+        private val alimentDao: AlimentDao,
+        private val search: String,
+        activity: Activity?
+    ) :
         AsyncTask<Void, Void, Void>() {
 
         private var allAlimentsStored: List<Aliment>? = null
@@ -94,7 +95,6 @@ class AlimentRepository(application: Application) {
             LocalBroadcastManager.getInstance(weakActivity.get()!!.applicationContext)
 
         override fun doInBackground(vararg params: Void?): Void? {
-            Debug.waitForDebugger()
             Log.e("PARAMS", "gregertsgesger $params")
             allAlimentsStored = ArrayList()
             alimentsName = ArrayList()
