@@ -85,5 +85,8 @@
     <string name="next">Next</string>
     <string name="default_weight">100</string>
     <string name="name">Name</string>
+    <string name="steps">Steps :</string>
+    <string name="_0">0</string>
+    <string name="stepcounter">StepCounter</string>
 
 </resources>

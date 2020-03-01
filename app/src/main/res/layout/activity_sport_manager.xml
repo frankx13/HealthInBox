@@ -22,4 +22,18 @@
         app:subtitleTextColor="@android:color/white"
         app:title="@string/app_name" />
 
+    <Button
+        android:id="@+id/btn_stepcounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_dropbox_btn"
+        android:text="@string/stepcounter"
+        android:drawableEnd="@drawable/ic_directions_walk_black_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_sport_manager" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

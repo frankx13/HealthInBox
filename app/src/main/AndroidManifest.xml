@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddEditRecipeActivity"></activity>
+        <activity android:name=".StepCounterActivity"></activity>
+        <activity android:name=".AddEditRecipeActivity" />
         <activity android:name=".AddEditAlimentActivity" />
         <activity
             android:name=".FoodManagerActivity"
