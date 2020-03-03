@@ -5,19 +5,24 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.studio.neopanda.healthinbox.base.BaseToolbarActivity
 import kotlinx.android.synthetic.main.activity_step_counter.*
 
-class StepCounterActivity : AppCompatActivity(), SensorEventListener {
-    var running = false
-    var sensorManager: SensorManager? = null
+class StepCounterActivity : BaseToolbarActivity(), SensorEventListener {
+    override fun getLayoutContentViewID(): Int {
+        return R.layout.activity_step_counter
+    }
+
+    private var running = false
+    private var sensorManager: SensorManager? = null
+    private val backTargetActivity = SportManagerActivity()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_step_counter)
 
+        configureToolbar(toolbar_steps_tracker, backTargetActivity)
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
     }
 
@@ -25,9 +30,9 @@ class StepCounterActivity : AppCompatActivity(), SensorEventListener {
         super.onResume()
 
         running = true
-        var stepsSensor = sensorManager?.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
+        val stepsSensor = sensorManager?.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
 
-        if (stepsSensor == null){
+        if (stepsSensor == null) {
             Toast.makeText(this, "No Step Counter Sensor", Toast.LENGTH_LONG).show()
         } else {
             sensorManager?.registerListener(this, stepsSensor, SensorManager.SENSOR_DELAY_UI)
@@ -46,7 +51,7 @@ class StepCounterActivity : AppCompatActivity(), SensorEventListener {
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
-        if (running){
+        if (running) {
             tv_steps.text = "" + event!!.values[0]
         }
     }
