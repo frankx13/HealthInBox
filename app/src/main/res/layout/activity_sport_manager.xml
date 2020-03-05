@@ -26,14 +26,42 @@
         android:id="@+id/btn_stepcounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/login_dropbox_btn"
-        android:text="@string/stepcounter"
         android:drawableEnd="@drawable/ic_directions_walk_black_24dp"
-        app:layout_constraintEnd_toEndOf="parent"
         android:padding="10dp"
+        android:text="@string/stepcounter"
+        android:textAllCaps="false"
+        android:textColor="#167FFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_sport_manager" />
 
+    <Button
+        android:id="@+id/activity_tracker_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/login_dropbox_btn"
+        android:drawableEnd="@drawable/ic_event_note_black_24dp"
+        android:drawablePadding="5dp"
+        android:padding="10dp"
+        android:text="@string/activity_tracker"
+        android:textAllCaps="false"
+        android:textColor="#167FFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_stepcounter" />
+
+    <FrameLayout
+        android:id="@+id/fragment_screen_sport_manager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="9dp"
+        android:elevation="6dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

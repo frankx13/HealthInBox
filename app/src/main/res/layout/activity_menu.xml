@@ -120,6 +120,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sportsBtn" />
 
+    <Button
+        android:id="@+id/weightBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/login_dropbox_btn"
+        android:drawableEnd="@drawable/ic_scale_black_24dp"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:text="@string/weight_choice"
+        android:textAllCaps="false"
+        android:textColor="#167FFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodBtn" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"

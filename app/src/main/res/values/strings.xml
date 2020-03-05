@@ -88,5 +88,8 @@
     <string name="steps">Steps :</string>
     <string name="_0">0</string>
     <string name="stepcounter">StepCounter</string>
+    <string name="activity_tracker">ActivityTracker</string>
+    <string name="weight_choice">Weight Manager</string>
+    <string name="weight_evolution_previous">75Kg\n+7kg</string>
 
 </resources>

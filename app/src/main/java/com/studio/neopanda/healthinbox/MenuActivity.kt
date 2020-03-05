@@ -28,5 +28,11 @@ class MenuActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        weightBtn.setOnClickListener {
+            val intent = Intent(this, WeightManagerActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }

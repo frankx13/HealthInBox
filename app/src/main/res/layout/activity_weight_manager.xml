@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D6FEFF"
+    tools:context=".WeightManagerActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_weight_manager"
+        style="@style/ToolBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_bright"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+        app:subtitle="@string/subtitle_toolbar"
+        app:subtitleTextColor="@android:color/white"
+        app:title="@string/app_name" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/weight_choice"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_weight_manager" />
+
+    <LinearLayout
+        android:id="@+id/weight_previous_to_current"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center_horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="20sp"
+            android:drawableTop="@drawable/ic_trending_up_red_24dp"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            android:text="@string/weight_evolution_previous"/>
+
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:background="@android:color/holo_red_light"/>
+
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="0dp"
+            android:layout_weight="90"
+            android:background="@android:color/holo_green_light"/>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
