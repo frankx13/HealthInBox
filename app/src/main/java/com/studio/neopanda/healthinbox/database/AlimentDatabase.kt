@@ -10,13 +10,15 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.studio.neopanda.healthinbox.database.dao.AlimentDao
 import com.studio.neopanda.healthinbox.database.dao.MealDao
 import com.studio.neopanda.healthinbox.database.dao.RecipeDao
+import com.studio.neopanda.healthinbox.database.dao.WeightDao
 import com.studio.neopanda.healthinbox.database.entities.Aliment
 import com.studio.neopanda.healthinbox.database.entities.Meal
 import com.studio.neopanda.healthinbox.database.entities.Recipe
+import com.studio.neopanda.healthinbox.database.entities.Weight
 
 
 @Database(
-    entities = [Aliment::class, Recipe::class, Meal::class],
+    entities = [Aliment::class, Recipe::class, Meal::class, Weight::class],
     version = 4,
     exportSchema = false
 )
@@ -25,6 +27,7 @@ abstract class AlimentDatabase : RoomDatabase() {
     abstract fun alimentDao(): AlimentDao
     abstract fun recipeDao(): RecipeDao
     abstract fun mealDao(): MealDao
+    abstract fun weightDao(): WeightDao
 
 
     companion object {
