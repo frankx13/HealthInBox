@@ -37,7 +37,7 @@ class WeightViewModel(application: Application) : AndroidViewModel(application) 
         return allWeights
     }
 
-    fun searchWeights(search: String, activity: Activity) {
-        repository.searchWeightsByDate(search, activity)
+    fun searchWeights(searchId: Int, activity: Activity) {
+        repository.searchWeightsByDate(searchId, activity)
     }
 }

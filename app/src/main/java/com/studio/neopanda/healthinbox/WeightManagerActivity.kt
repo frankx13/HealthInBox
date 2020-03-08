@@ -42,7 +42,7 @@ class WeightManagerActivity : BaseToolbarActivity() {
         weightDatesList = ArrayList()
 
         weightViewModel = ViewModelProviders.of(this).get(WeightViewModel::class.java)
-        weightViewModel!!.getAllWeights()
+        weightViewModel!!.searchWeights(1, this)
     }
 
     override fun getLayoutContentViewID(): Int {

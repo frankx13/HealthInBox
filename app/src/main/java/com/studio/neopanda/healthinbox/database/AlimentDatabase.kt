@@ -71,6 +71,7 @@ abstract class AlimentDatabase : RoomDatabase() {
             private val alimentDao: AlimentDao = db.alimentDao()
             private val mealDao: MealDao = db.mealDao()
             private val recipeDao: RecipeDao = db.recipeDao()
+            private val weightDao: WeightDao = db.weightDao()
 
             override fun doInBackground(vararg voids: Void): Void? {
                 alimentDao.insert(
@@ -2088,6 +2089,19 @@ abstract class AlimentDatabase : RoomDatabase() {
                         5,
                         1
                     )
+                )
+
+                weightDao.insert(
+                    Weight(98, "01-03-2020")
+                )
+                weightDao.insert(
+                    Weight(95, "02-03-2020")
+                )
+                weightDao.insert(
+                    Weight(93, "03-03-2020")
+                )
+                weightDao.insert(
+                    Weight(92, "04-03-2020")
                 )
 
                 return null

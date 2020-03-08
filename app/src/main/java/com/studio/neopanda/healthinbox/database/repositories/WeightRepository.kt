@@ -53,7 +53,7 @@ class WeightRepository(application: Application) {
         return allWeights
     }
 
-    fun searchWeightsByDate(search: String, activity: Activity) {
+    fun searchWeightsByDate(search: Int, activity: Activity) {
         SearchWeightsAsyncTask(
             weightDao,
             search,
@@ -99,7 +99,7 @@ class WeightRepository(application: Application) {
 
     private class SearchWeightsAsyncTask internal constructor(
         private val weightDao: WeightDao,
-        private val search: String,
+        private val search: Int,
         activity: Activity?
     ) :
         AsyncTask<Void, Void, Void>() {

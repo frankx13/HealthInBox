@@ -22,6 +22,6 @@ interface WeightDao {
     @get:Query("SELECT * FROM weight_table ORDER BY date DESC")
     val allWeights: LiveData<List<Weight>>
 
-    @Query("SELECT * FROM weight_table WHERE value LIKE :searchDate")
-    fun searchWeightsByDate(searchDate: String?): List<Weight>
+    @Query("SELECT * FROM weight_table WHERE id LIKE :searchID")
+    fun searchWeightsByDate(searchID: Int?): List<Weight>
 }
