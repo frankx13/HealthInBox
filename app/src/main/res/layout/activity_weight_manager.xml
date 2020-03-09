@@ -36,41 +36,77 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_weight_manager" />
 
+    <TextView
+        android:id="@+id/tv_lweight_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last weight : 70kg"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/weight_previous_to_current"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/tv_lweight_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The 00-00-0000"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_lweight_value" />
+
+    <TextView
+        android:id="@+id/tv_reference_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reference Weight is 75 kg"
+        android:textColor="@android:color/black"
+        android:drawableEnd="@drawable/ic_mode_edit_black_24dp"
+        android:drawablePadding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_lweight_date" />
+
     <LinearLayout
         android:id="@+id/weight_previous_to_current"
         android:layout_width="wrap_content"
         android:layout_height="250dp"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="40dp"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:gravity="center_horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" >
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
 
         <TextView
+            android:id="@+id/tv_weight_average"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:drawableTop="@drawable/ic_trending_up_red_24dp"
+            android:text="@string/weight_evolution_previous"
             android:textAlignment="center"
             android:textColor="@android:color/holo_red_dark"
             android:textSize="20sp"
-            android:drawableTop="@drawable/ic_trending_up_red_24dp"
-            android:textStyle="bold"
-            android:layout_marginBottom="5dp"
-            android:text="@string/weight_evolution_previous"/>
+            android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tv_nreference_weight"
             android:layout_width="20dp"
             android:layout_height="0dp"
             android:layout_weight="10"
-            android:background="@android:color/holo_red_light"/>
+            android:background="@android:color/holo_red_light" />
 
         <TextView
+            android:id="@+id/tv_preference_weight"
             android:layout_width="20dp"
             android:layout_height="0dp"
             android:layout_weight="90"
-            android:background="@android:color/holo_green_light"/>
+            android:background="@android:color/holo_green_light" />
 
 
     </LinearLayout>

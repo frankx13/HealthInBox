@@ -90,6 +90,6 @@
     <string name="stepcounter">StepCounter</string>
     <string name="activity_tracker">ActivityTracker</string>
     <string name="weight_choice">Weight Manager</string>
-    <string name="weight_evolution_previous">75Kg\n+7kg</string>
+    <string name="weight_evolution_previous">Average 10 days\n75Kg\n+7kg</string>
 
 </resources>

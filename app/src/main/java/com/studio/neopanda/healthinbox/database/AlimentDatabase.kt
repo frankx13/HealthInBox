@@ -19,7 +19,7 @@ import com.studio.neopanda.healthinbox.database.entities.Weight
 
 @Database(
     entities = [Aliment::class, Recipe::class, Meal::class, Weight::class],
-    version = 4,
+    version = 5,
     exportSchema = false
 )
 abstract class AlimentDatabase : RoomDatabase() {
