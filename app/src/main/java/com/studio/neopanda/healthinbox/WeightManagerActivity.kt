@@ -25,7 +25,6 @@ class WeightManagerActivity : BaseToolbarActivity() {
     private val targetActivity = MenuActivity()
     private var weightViewModel: WeightViewModel? = null
 
-    private lateinit var weightList: ArrayList<Weight>
     private var weightValuesList: ArrayList<Int>? = null
     private var weightDatesList: ArrayList<String>? = null
 
@@ -43,7 +42,6 @@ class WeightManagerActivity : BaseToolbarActivity() {
     //TODO : Transform the hardcoded reference into a SharedPreferences input
     private var referenceWeight = 75
     private var negativeReferenceWeight = 25f
-    private var positiveReferenceWeight = 75f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
