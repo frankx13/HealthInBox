@@ -97,15 +97,13 @@
         <TextView
             android:id="@+id/tv_nreference_weight"
             android:layout_width="20dp"
-            android:layout_height="0dp"
-            android:layout_weight="10"
+            android:layout_height="25dp"
             android:background="@android:color/holo_red_light" />
 
         <TextView
             android:id="@+id/tv_preference_weight"
             android:layout_width="20dp"
-            android:layout_height="0dp"
-            android:layout_weight="90"
+            android:layout_height="75dp"
             android:background="@android:color/holo_green_light" />
 
 

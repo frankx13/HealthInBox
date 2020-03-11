@@ -38,6 +38,8 @@ class WeightManagerActivity : BaseToolbarActivity() {
     private var lastDate = "00-00-0000"
 
     private var comparator = 0
+    private var percentReference = 0.0f
+    private var percentNeg = 0
 
     //TODO : Transform the hardcoded reference into a SharedPreferences input
     private var referenceWeight = 75
@@ -131,12 +133,15 @@ class WeightManagerActivity : BaseToolbarActivity() {
     }
 
     private fun adjustCourbToAverage() {
+        percentReference = referenceWeight/100.0f
+
         if (averageTenDays > referenceWeight){
-            negativeReferenceWeight = averageTenDays - referenceWeight.toFloat()
+            val percentNeg = averageTenDays.toFloat() - referenceWeight.toFloat()
+            percentReference = percentNeg / percentReference
+
             tv_nreference_weight.layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                negativeReferenceWeight
+                percentReference.toInt()
             )
         }
     }
