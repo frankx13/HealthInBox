@@ -24,7 +24,7 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="@string/weight_choice"
@@ -36,16 +36,99 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_weight_manager" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="100dp"
+        android:src="@drawable/ic_add_black_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_history_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_history_black_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <LinearLayout
+        android:id="@+id/container_add_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fab_add_weight">
+
+        <ImageButton
+            android:id="@+id/btn_cancel_add_weight"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_cancel_red_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weight_you_want_to_add"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/et_weight_value_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/holo_green_light"
+            android:hint="Weight in KG : "
+            android:inputType="number"
+            android:padding="10dp"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/et_weight_date_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/holo_green_light"
+            android:hint="Date : "
+            android:inputType="date"
+            android:padding="10dp"
+            android:textColor="@android:color/black"
+            tools:ignore="TextFields" />
+
+        <Button
+            android:id="@+id/add_entry_weight_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/login_dropbox_btn"
+            android:hint="Add entry"
+            android:padding="10dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/tv_lweight_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:text="Last weight : 70kg"
         android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/weight_previous_to_current"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/fab_add_weight" />
 
     <TextView
         android:id="@+id/tv_lweight_date"
@@ -61,26 +144,59 @@
         android:id="@+id/tv_reference_weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reference Weight is 75 kg"
-        android:textColor="@android:color/black"
         android:drawableEnd="@drawable/ic_mode_edit_black_24dp"
         android:drawablePadding="10dp"
+        android:text="Reference Weight is 75 kg"
+        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_lweight_date" />
+
+    <EditText
+        android:id="@+id/et_reference_weight_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/new_reference_weight"
+        android:inputType="number"
+        android:textColor="@android:color/black"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_cancel_modify_rWeight" />
+
+    <Button
+        android:id="@+id/btn_reference_weight_validate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_dropbox_btn"
+        android:text="Validate"
+        android:visibility="gone"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_reference_weight_input" />
+
+    <ImageButton
+        android:id="@+id/btn_cancel_modify_rWeight"
+        android:layout_width="24dp"
+        android:visibility="gone"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_cancel_red_24dp"
+        app:layout_constraintBottom_toTopOf="@+id/et_reference_weight_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_reference_weight" />
 
     <LinearLayout
         android:id="@+id/weight_previous_to_current"
         android:layout_width="wrap_content"
         android:layout_height="250dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="35dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4">
+        app:layout_constraintTop_toBottomOf="@+id/tv_reference_weight">
 
         <TextView
             android:id="@+id/tv_weight_average"
@@ -105,8 +221,6 @@
             android:layout_width="20dp"
             android:layout_height="75dp"
             android:background="@android:color/holo_green_light" />
-
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
